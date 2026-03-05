@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Vrinda Karuvanchery — ASIC Physical Design Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:     #060b16;
+      --bg2:    #0a1120;
+      --bg3:    #0f1a2e;
+      --card:   rgba(255,255,255,0.025);
+      --accent: #00c9a7;
+      --accent2:#7c6fff;
+      --text:   #dde6f0;
+      --text2:  #7a8fa8;
+      --border: rgba(255,255,255,0.07);
+      --glow:   rgba(0,201,167,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(6,11,22,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.4); }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--accent); text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--text2); text-decoration: none;
+      font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 7px 18px;
+      border: 1px solid var(--accent);
+      color: var(--accent); border-radius: 6px;
+      font-size: 13px; font-weight: 500; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: #000; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text2); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: 60px; left: 0; right: 0;
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      padding: 20px 5%; z-index: 199;
+      flex-direction: column; gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      display: block; padding: 14px 0;
+      color: var(--text2); text-decoration: none;
+      font-size: 15px; font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── SECTION BASE ─────────────────────────────────── */
+    .section-wrap { padding: 96px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700; color: var(--text);
+      line-height: 1.15; letter-spacing: -0.025em;
+      margin-bottom: 52px;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 80px 5% 60px;
+      overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .hero-gradient {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 50%, rgba(0,201,167,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(124,111,255,0.04) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 300px;
+      gap: 72px; align-items: center;
+      position: relative; z-index: 2; width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 1px; background: var(--accent);
+    }
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 5.5vw, 66px);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 14px;
+    }
+    .hero-name .accent { color: var(--accent); }
+    .hero-role {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: var(--text2); font-weight: 400;
+      letter-spacing: 0.02em; margin-bottom: 6px;
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 14px;
+      flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .hero-meta-item {
+      font-size: 13px; color: var(--text2);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hero-meta-dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: var(--border);
+    }
+    .hero-summary {
+      font-size: 15.5px; line-height: 1.75;
+      color: var(--text2); max-width: 540px;
+      margin-bottom: 36px;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      background: var(--accent); color: #000;
+      border: none; border-radius: 8px;
+      font-size: 14.5px; font-weight: 600;
+      text-decoration: none; transition: all 0.2s; cursor: pointer;
+    }
+    .btn-primary:hover { background: #00ddb7; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,201,167,0.25); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 14.5px; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.035); }
+
+    /* Photo */
+    .hero-photo-wrap { position: relative; display: flex; justify-content: center; }
+    .hero-photo-glow {
+      position: absolute; inset: -30px; border-radius: 50%;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 68%);
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.05); }
+    }
+    .hero-photo-ring {
+      position: relative; width: 260px; height: 260px;
+      border-radius: 50%; padding: 2.5px;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent2), var(--accent));
+      animation: ringRotate 8s linear infinite;
+    }
+    @keyframes ringRotate {
+      to { --angle: 360deg; }
+    }
+    .hero-photo-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      overflow: hidden; background: var(--bg2);
+    }
+    .hero-photo-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute; bottom: 4px; right: -16px;
+      background: var(--bg3); border: 1px solid rgba(0,201,167,0.25);
+      border-radius: 10px; padding: 9px 13px;
+      font-size: 11.5px; font-weight: 600;
+      color: var(--accent); white-space: nowrap;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ── STATS ─────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 5%;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      text-align: center; padding: 0 24px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px; font-weight: 700;
+      color: var(--accent); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 12.5px; color: var(--text2); font-weight: 400; }
+
+    /* ── ABOUT ─────────────────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 72px; align-items: start;
+    }
+    .about-text p {
+      color: var(--text2); line-height: 1.82;
+      font-size: 15px; margin-bottom: 18px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .highlight-stack { display: flex; flex-direction: column; gap: 14px; }
+    .highlight-card {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+      transition: border-color 0.25s;
+    }
+    .highlight-card:hover { border-color: rgba(0,201,167,0.28); }
+    .h-icon {
+      width: 38px; height: 38px; border-radius: 9px;
+      background: rgba(0,201,167,0.09);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .highlight-card h4 {
+      font-size: 14px; font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 3px;
+    }
+    .highlight-card p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+    /* ── EXPERIENCE ─────────────────────────────────────── */
+    #experience { background: var(--bg2); }
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 3px; top: 12px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent) 0%, rgba(0,201,167,0.1) 100%);
+    }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -29px; top: 16px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,201,167,0.15), 0 0 14px rgba(0,201,167,0.4);
+    }
+    .tl-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px 28px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .tl-card:hover { border-color: rgba(0,201,167,0.22); transform: translateX(4px); }
+    .tl-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px; margin-bottom: 4px;
+    }
+    .tl-company {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16.5px; font-weight: 700; color: var(--text);
+    }
+    .tl-date {
+      font-size: 11.5px; color: var(--accent); font-weight: 600;
+      letter-spacing: 0.04em; white-space: nowrap;
+      background: rgba(0,201,167,0.09); padding: 4px 11px; border-radius: 20px;
+    }
+    .tl-role { font-size: 13.5px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+    .tl-loc { font-size: 12px; color: var(--text2); margin-bottom: 16px; }
+    .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .tl-bullets li {
+      font-size: 13.5px; color: var(--text2);
+      padding-left: 16px; position: relative; line-height: 1.65;
+    }
+    .tl-bullets li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--accent); font-size: 16px; line-height: 1.45;
+    }
+
+    /* ── SKILLS ─────────────────────────────────────────── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .skill-cat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px;
+      transition: border-color 0.25s;
+    }
+    .skill-cat:hover { border-color: rgba(0,201,167,0.22); }
+    .skill-cat-head {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .skill-cat-head-icon {
+      width: 30px; height: 30px; border-radius: 7px;
+      background: rgba(0,201,167,0.09);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-tag {
+      font-size: 12px; font-weight: 500;
+      padding: 4px 11px; border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text2); transition: all 0.2s;
+    }
+    .skill-tag:hover {
+      background: rgba(0,201,167,0.09);
+      border-color: rgba(0,201,167,0.28);
+      color: var(--accent);
+    }
+
+    /* ── EDUCATION ─────────────────────────────────────── */
+    #education { background: var(--bg2); }
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+    }
+    .edu-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 30px 26px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .edu-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .edu-card:hover { border-color: rgba(0,201,167,0.25); transform: translateY(-5px); }
+    .edu-degree {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 700; margin-bottom: 5px;
+    }
+    .edu-field { font-size: 12.5px; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
+    .edu-univ { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+    .edu-year {
+      font-size: 12px; color: var(--text2);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── ACHIEVEMENTS ─────────────────────────────────── */
+    .ach-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+    }
+    .ach-card {
+      display: flex; gap: 18px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px;
+      transition: border-color 0.25s;
+    }
+    .ach-card:hover { border-color: rgba(0,201,167,0.28); }
+    .ach-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+    .ach-content h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14.5px; font-weight: 600; margin-bottom: 5px;
+    }
+    .ach-content p { font-size: 13.5px; color: var(--text2); line-height: 1.55; }
+
+    /* ── PERSONAL ─────────────────────────────────────── */
+    #personal { background: var(--bg2); }
+    .personal-intro {
+      font-size: 15px; color: var(--text2); line-height: 1.8;
+      max-width: 680px; margin-bottom: 48px;
+    }
+    .personal-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .personal-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 22px; text-align: center;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .personal-card:hover { border-color: rgba(0,201,167,0.28); transform: translateY(-5px); }
+    .personal-emoji { font-size: 36px; display: block; margin-bottom: 14px; }
+    .personal-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px; font-weight: 600; margin-bottom: 8px;
+    }
+    .personal-card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+    /* Reiki featured card */
+    .personal-card.featured {
+      grid-column: 1 / -1;
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 28px; text-align: left; align-items: center;
+      background: linear-gradient(135deg, rgba(124,111,255,0.07) 0%, rgba(0,201,167,0.03) 100%);
+      border-color: rgba(124,111,255,0.22);
+      padding: 32px 36px;
+    }
+    .personal-card.featured:hover {
+      border-color: rgba(124,111,255,0.45);
+      transform: translateY(-4px);
+    }
+    .personal-card.featured .personal-emoji {
+      font-size: 52px; margin-bottom: 0; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .featured-badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent2);
+      background: rgba(124,111,255,0.1);
+      border: 1px solid rgba(124,111,255,0.22);
+      padding: 3px 12px; border-radius: 20px; margin-bottom: 9px;
+    }
+    .personal-card.featured h4 {
+      font-size: 18px; color: var(--text); margin-bottom: 10px;
+    }
+    .personal-card.featured p { font-size: 14px; line-height: 1.72; max-width: 760px; }
+    @media (max-width: 580px) {
+      .personal-card.featured {
+        grid-template-columns: 1fr; gap: 16px; padding: 26px 22px; text-align: center;
+      }
+    }
+
+    .lang-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 40px; }
+    .lang-chip {
+      padding: 8px 20px; border-radius: 30px;
+      border: 1px solid var(--border);
+      font-size: 13px; font-weight: 500; color: var(--text2);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .lang-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    /* ── CONTACT ──────────────────────────────────────── */
+    #contact { text-align: center; }
+    .contact-inner { max-width: 580px; margin: 0 auto; }
+    .contact-desc {
+      color: var(--text2); font-size: 15.5px; line-height: 1.78;
+      margin-bottom: 40px;
+    }
+    .contact-links {
+      display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 13px 22px; border: 1px solid var(--border);
+      border-radius: 10px; text-decoration: none;
+      color: var(--text); font-size: 13.5px; font-weight: 500;
+      transition: all 0.22s;
+    }
+    .contact-link:hover {
+      border-color: rgba(0,201,167,0.35);
+      background: rgba(0,201,167,0.04);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 5%;
+      text-align: center;
+      font-size: 12.5px; color: var(--text2);
+    }
+
+    /* ── REVEAL ANIMATION ─────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .reveal-delay-6 { transition-delay: 0.48s; }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-inner {
+        grid-template-columns: 1fr; text-align: center;
+        gap: 44px;
+      }
+      .hero-eyebrow { justify-content: center; }
+      .hero-meta { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-summary { margin: 0 auto 36px; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-ring { width: 220px; height: 220px; }
+      .hero-badge { right: 0; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+      .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+      .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .edu-grid { grid-template-columns: 1fr; max-width: 440px; }
+      .ach-grid { grid-template-columns: 1fr; }
+      .personal-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .section-wrap { padding: 72px 5%; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .personal-grid { grid-template-columns: 1fr; }
+      .hero-photo-ring { width: 190px; height: 190px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav id="main-nav">
+  <a class="nav-logo" href="#hero">VK.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#personal">Beyond Work</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:vrinda.karuvanchery@gmail.com">Get in Touch</a>
+  <div class="nav-hamburger" id="hamburger" aria-label="menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about"       onclick="closeMobile()">About</a>
+  <a href="#experience"  onclick="closeMobile()">Experience</a>
+  <a href="#skills"      onclick="closeMobile()">Skills</a>
+  <a href="#education"   onclick="closeMobile()">Education</a>
+  <a href="#personal"    onclick="closeMobile()">Beyond Work</a>
+  <a href="mailto:vrinda.karuvanchery@gmail.com">Get in Touch</a>
+</div>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-gradient"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">ASIC Physical Design Engineer</div>
+      <h1 class="hero-name">Dr. Vrinda<br><span class="accent">Karuvanchery</span></h1>
+      <div class="hero-role">Block-Level RTL-to-GDSII &nbsp;·&nbsp; 28nm Process Technology</div>
+      <div class="hero-meta">
+        <span class="hero-meta-item">🎓 PhD in Electronics</span>
+        <span class="hero-meta-dot"></span>
+        <span class="hero-meta-item">📍 Bangalore, India</span>
+        <span class="hero-meta-dot"></span>
+        <span class="hero-meta-item">✅ Open to Opportunities</span>
+      </div>
+      <p class="hero-summary">Early-career ASIC Physical Design Engineer with a strong VLSI academic foundation and hands-on block-level implementation experience. Backed by a PhD in Electronics, I bring disciplined engineering thinking, deep understanding of physical effects, and a structured approach to timing, parasitics, and layout-driven trade-offs.</p>
+      <div class="hero-ctas">
+        <a href="mailto:vrinda.karuvanchery@gmail.com" class="btn-primary">
+          ✉️ &nbsp;Get in Touch
+        </a>
+        <a href="https://www.linkedin.com/in/vrinda-karuvanchery/" target="_blank" rel="noopener" class="btn-outline">
+          LinkedIn Profile →
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-ring">
+        <div class="hero-photo-inner">
+          <img src="Vrinda.png" alt="Dr. Vrinda Karuvanchery — ASIC Physical Design Engineer">
+        </div>
+      </div>
+      <div class="hero-badge">📍 Bangalore, IN</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ─────────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num" data-count="10">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="4">0</div>
+      <div class="stat-label">Research Publications</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="5">0</div>
+      <div class="stat-label">International Conferences</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="500">0</div>
+      <div class="stat-label">Hours of EM Simulation</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────── -->
+<div class="section-wrap" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Engineer.<br>Researcher.<br>Educator.</h2>
+        <p>I'm a Physical Design engineer transitioning from a strong research and academic background into semiconductor product teams. With a PhD in Electronics and over a decade spanning research, teaching, and industry-aligned training, I bring both depth and discipline to every challenge.</p>
+        <p>My hands-on exposure covers complete RTL-to-GDSII execution using both commercial Synopsys tools and open-source OpenLANE/OpenROAD toolchains. I approach problems with structured implementation reasoning — analyzing timing, parasitics, and layout-driven trade-offs with precision.</p>
+        <p>I'm actively seeking an individual-contributor Physical Design role in product semiconductor teams, with a goal of growing into full block ownership and contributing to meaningful silicon.</p>
+      </div>
+      <div class="highlight-stack reveal reveal-delay-2">
+        <div class="highlight-card">
+          <div class="h-icon">🎓</div>
+          <div>
+            <h4>PhD in Electronics</h4>
+            <p>Passive Device Modeling for RFICs — Amrita University. 7+ years of rigorous academic research.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="h-icon">📄</div>
+          <div>
+            <h4>Research & Publications</h4>
+            <p>4 peer-reviewed international journal papers on electromagnetic modeling and RF integrated circuits.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="h-icon">🌍</div>
+          <div>
+            <h4>International Exposure</h4>
+            <p>Sessional Lecturer at Basingstoke College of Engineering, London. Presented at 5 global conferences.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="h-icon">⚡</div>
+          <div>
+            <h4>Industry-Grade Training</h4>
+            <p>Block-level PD experience with Synopsys ICC2, PrimeTime, StarRC under 28nm and 14nm FinFET.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE ─────────────────────────────────────── -->
+<div class="section-wrap" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career Timeline</div>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">Star VLSI</div>
+            <div class="tl-date">Sep 2025 – Present</div>
+          </div>
+          <div class="tl-role">Physical Design Engineer · Self-driven Projects</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Executed complete RTL-to-GDSII physical design flows using OpenLANE/OpenROAD, including end-to-end implementation of the PicoRV32a RISC core in GitHub Codespaces.</li>
+            <li>Performed report-driven iterations across synthesis, floorplanning, placement, CTS, routing, and STA — analyzing WNS/TNS, clock skew, congestion, utilization, and QoR metrics.</li>
+            <li>Applied ECO-style fixes including buffering, resizing, density tuning, and selective path cleanup to study timing improvement and placement-driven sensitivities.</li>
+            <li>Validated post-route timing using OpenSTA and inspected PDN (VDD/VSS) topology to ensure physical integrity and signoff-level correctness.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">PES University</div>
+            <div class="tl-date">Sep 2024 – Feb 2025</div>
+          </div>
+          <div class="tl-role">Assistant Professor</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Taught core Electronics and VLSI subjects with strong hands-on engagement with circuit behavior, devices, and system-level design concepts.</li>
+            <li>Guided students on industry-aligned technical projects, reinforcing applied engineering thinking alongside fundamentals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">Basingstoke College of Engineering</div>
+            <div class="tl-date">Aug 2023 – Jun 2024</div>
+          </div>
+          <div class="tl-role">Sessional Lecturer</div>
+          <div class="tl-loc">📍 London, United Kingdom</div>
+          <ul class="tl-bullets">
+            <li>Delivered structured technical instruction aligned with applied engineering outcomes in the UK academic system.</li>
+            <li>Mentored students on project-based learning emphasizing correctness, rigor, and execution discipline.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">ChipEdge Technologies Pvt Ltd</div>
+            <div class="tl-date">Jan 2023 – Jul 2023</div>
+          </div>
+          <div class="tl-role">Physical Design Trainee</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs using Synopsys Design Compiler, ICC2, PrimeTime, and StarRC, following industry-standard sequencing.</li>
+            <li>Executed floorplanning, placement, routing, and clock tree synthesis with focus on timing-driven implementation, congestion awareness, and structured closure.</li>
+            <li>Performed static timing analysis including setup/hold checks and MCMM fundamentals, interpreting reports to identify critical paths and closure bottlenecks.</li>
+            <li>Gained exposure to 14nm FinFET concepts — parasitics, clock skew, and power–timing trade-offs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">Amrita Vishwa Vidya Peetham</div>
+            <div class="tl-date">Oct 2015 – Dec 2022</div>
+          </div>
+          <div class="tl-role">Research Scholar (PhD)</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Conducted advanced research in RF integrated circuits and passive device modeling for 7+ years, strengthening understanding of layout-dependent behavior and parasitic effects.</li>
+            <li>Executed 500+ hours of electromagnetic simulations using Ansys HFSS, reinforcing physical intuition relevant to signal integrity and high-frequency effects.</li>
+            <li>Published 4 peer-reviewed journal papers and presented at 5 international semiconductor-focused conferences.</li>
+            <li>Developed strong analytical, documentation, and problem-decomposition skills applicable to design debug and root-cause analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">T. John College of Engineering</div>
+            <div class="tl-date">Aug 2013 – Jul 2014</div>
+          </div>
+          <div class="tl-role">Assistant Professor</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Delivered engaging lectures on Microwave Devices and Electrical Circuits, integrating interactive teaching techniques.</li>
+            <li>Led curriculum refinement to enhance student comprehension and measurable academic performance.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── SKILLS ─────────────────────────────────────────── -->
+<div class="section-wrap" id="skills">
+  <div class="section-inner">
+    <div class="section-label">Technical Expertise</div>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <div class="skill-cat-head">
+          <div class="skill-cat-head-icon">🔧</div>
+          ASIC Physical Design
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Floorplanning</span>
+          <span class="skill-tag">Placement & Routing</span>
+          <span class="skill-tag">Clock Tree Synthesis</span>
+          <span class="skill-tag">Static Timing Analysis</span>
+          <span class="skill-tag">MCMM Analysis</span>
+          <span class="skill-tag">ECO Iterations</span>
+          <span class="skill-tag">PDN Inspection</span>
+          <span class="skill-tag">DRC / LVS</span>
+          <span class="skill-tag">28nm CMOS</span>
+          <span class="skill-tag">14nm FinFET</span>
+          <span class="skill-tag">Signal Integrity</span>
+          <span class="skill-tag">Power Optimization</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-2">
+        <div class="skill-cat-head">
+          <div class="skill-cat-head-icon">🖥️</div>
+          EDA Tools
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Synopsys ICC2</span>
+          <span class="skill-tag">PrimeTime</span>
+          <span class="skill-tag">StarRC</span>
+          <span class="skill-tag">Design Compiler</span>
+          <span class="skill-tag">Cadence Innovus</span>
+          <span class="skill-tag">Cadence Virtuoso</span>
+          <span class="skill-tag">Calibre DRC/LVS</span>
+          <span class="skill-tag">OpenLANE</span>
+          <span class="skill-tag">OpenROAD</span>
+          <span class="skill-tag">OpenSTA</span>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-tag">KLayout</span>
+          <span class="skill-tag">Ansys HFSS</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-4">
+        <div class="skill-cat-head">
+          <div class="skill-cat-head-icon">💡</div>
+          Scripting & Soft Skills
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">TCL Scripting</span>
+          <span class="skill-tag">Shell Scripting</span>
+          <span class="skill-tag">Analytical Thinking</span>
+          <span class="skill-tag">Technical Documentation</span>
+          <span class="skill-tag">Root-Cause Analysis</span>
+          <span class="skill-tag">Cross-functional Collaboration</span>
+          <span class="skill-tag">Mentorship</span>
+          <span class="skill-tag">Learning Agility</span>
+          <span class="skill-tag">Engineering Discipline</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EDUCATION ─────────────────────────────────────── -->
+<div class="section-wrap" id="education">
+  <div class="section-inner">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Doctor of Philosophy</div>
+        <div class="edu-field">Passive Device Modeling for RFICs</div>
+        <div class="edu-univ">Amrita University, India</div>
+        <div class="edu-year">🗓&nbsp; Oct 2015 – Dec 2022</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-degree">Master of Technology</div>
+        <div class="edu-field">VLSI Design Engineering</div>
+        <div class="edu-univ">Amrita University, India</div>
+        <div class="edu-year">🗓&nbsp; 2011 – 2013</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-4">
+        <div class="edu-degree">Bachelor of Technology</div>
+        <div class="edu-field">Electronics & Communication Engineering</div>
+        <div class="edu-univ">University of Calicut, India</div>
+        <div class="edu-year">🗓&nbsp; 2006 – 2010</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ACHIEVEMENTS ─────────────────────────────────── -->
+<div class="section-wrap" id="achievements">
+  <div class="section-inner">
+    <div class="section-label">Milestones</div>
+    <h2 class="section-title">Achievements</h2>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon">📄</div>
+        <div class="ach-content">
+          <h4>4 High-Impact Research Publications</h4>
+          <p>Published peer-reviewed papers on electromagnetic modeling in esteemed international journals, advancing knowledge in RF circuit design.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal reveal-delay-2">
+        <div class="ach-icon">🎤</div>
+        <div class="ach-content">
+          <h4>5 International Conferences</h4>
+          <p>Presented cutting-edge research in RF integrated circuits and semiconductor physics at global academic forums.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal reveal-delay-1">
+        <div class="ach-icon">📚</div>
+        <div class="ach-content">
+          <h4>Curriculum Revitalization</h4>
+          <p>Designed and revitalized VLSI and microwave devices curricula, leading to measurable improvements in student performance and academic outcomes.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal reveal-delay-3">
+        <div class="ach-icon">📈</div>
+        <div class="ach-content">
+          <h4>25% Increase in Research Output</h4>
+          <p>Increased collaborative research output through effective mentorship and leadership of research teams across academic settings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PERSONAL ─────────────────────────────────────── -->
+<div class="section-wrap" id="personal">
+  <div class="section-inner">
+    <div class="section-label">Beyond the Lab</div>
+    <h2 class="section-title">Life Outside Work</h2>
+    <p class="personal-intro">Engineering is how I think — but there's a whole other dimension to who I am. From the energy of music and the freedom of travel, to the quiet discipline of Reiki, Vrinda's world outside the lab is as layered and intentional as her work inside it.</p>
+    <div class="personal-grid">
+      <div class="personal-card reveal">
+        <span class="personal-emoji">🎵</span>
+        <h4>Music</h4>
+        <p>Music is a constant companion — a source of calm, creativity, and connection that balances the analytical rigours of chip design.</p>
+      </div>
+      <div class="personal-card reveal reveal-delay-1">
+        <span class="personal-emoji">✈️</span>
+        <h4>Travelling</h4>
+        <p>Exploring new places and cultures fuels perspective and curiosity. From local escapes to international adventures, travel is a deep passion.</p>
+      </div>
+      <div class="personal-card reveal reveal-delay-2">
+        <span class="personal-emoji">⚙️</span>
+        <h4>Circuit Design</h4>
+        <p>Designing circuits isn't just a profession — it's a hobby. Experimenting with topologies and signal behavior keeps the engineering mind sharp.</p>
+      </div>
+      <div class="personal-card reveal reveal-delay-3">
+        <span class="personal-emoji">✍️</span>
+        <h4>Technical Blogging</h4>
+        <p>Writing about VLSI concepts, EDA tools, and engineering trade-offs — sharing knowledge and making complex topics accessible to all.</p>
+      </div>
+      <div class="personal-card reveal reveal-delay-4">
+        <span class="personal-emoji">🖥️</span>
+        <h4>Educational Technology</h4>
+        <p>Passionate about using technology to improve learning outcomes and make engineering education more engaging and effective.</p>
+      </div>
+      <div class="personal-card reveal reveal-delay-5">
+        <span class="personal-emoji">🌺</span>
+        <h4>Mindfulness & Wellbeing</h4>
+        <p>A firm believer that clarity of mind fuels quality of work — exploring practices that cultivate presence, focus, and inner balance.</p>
+      </div>
+    </div>
+
+    <!-- Reiki Featured Card -->
+    <div style="margin-top: 18px;">
+      <div class="personal-card featured reveal">
+        <span class="personal-emoji">🌿</span>
+        <div>
+          <div class="featured-badge">✦ Certified Practitioner</div>
+          <h4>Reiki & Energy Healing</h4>
+          <p>Beyond the world of silicon and timing paths, Vrinda is a certified Reiki and energy healing practitioner. She brings the same precision and intentionality she applies to chip design — into the practice of restoring balance, clearing energetic blocks, and promoting holistic wellbeing. A rare duality: the analytical rigour of a VLSI engineer, and the intuitive sensitivity of a healer. She believes that true performance — whether in a circuit or a human system — comes from harmony between all its parts.</p>
+        </div>
+      </div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-chip"><span class="dot"></span> English</div>
+      <div class="lang-chip"><span class="dot"></span> Hindi</div>
+      <div class="lang-chip"><span class="dot"></span> Malayalam</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT ─────────────────────────────────────── -->
+<div class="section-wrap" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner reveal">
+      <div class="section-label">Let's Connect</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-desc">I'm actively seeking individual-contributor ASIC Physical Design roles in product semiconductor teams. Open to conversations about the right opportunity — don't hesitate to reach out.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:vrinda.karuvanchery@gmail.com">
+          <span>✉️</span> vrinda.karuvanchery@gmail.com
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/vrinda-karuvanchery/" target="_blank" rel="noopener">
+          <span>💼</span> LinkedIn Profile
+        </a>
+        <a class="contact-link" href="tel:+919916679867">
+          <span>📞</span> +91 99166 79867
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>© 2026 Dr. Vrinda Karuvanchery &nbsp;·&nbsp; ASIC Physical Design Engineer &nbsp;·&nbsp; Bangalore, India</p>
+</footer>
+
+<script>
+/* ── NAV SCROLL SHADOW ─────────────────────────────── */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ── MOBILE MENU ───────────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile() { mobileMenu.classList.remove('open'); }
+
+/* ── HERO CIRCUIT CANVAS ───────────────────────────── */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  const COLOR = '#00c9a7';
+  let W, H, nodes = [], edges = [], pulses = [];
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    build();
+  }
+
+  function build() {
+    nodes = []; edges = []; pulses = [];
+    // Grid-based nodes (PCB trace feel)
+    const cols = Math.ceil(W / 80) + 1;
+    const rows = Math.ceil(H / 80) + 1;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        if (Math.random() < 0.6) {
+          nodes.push({
+            x: c * 80 + (Math.random() - 0.5) * 30,
+            y: r * 80 + (Math.random() - 0.5) * 30
+          });
+        }
+      }
+    }
+    // Connect nearby nodes with axis-aligned segments
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = Math.abs(nodes[i].x - nodes[j].x);
+        const dy = Math.abs(nodes[i].y - nodes[j].y);
+        if (dx < 120 && dy < 120 && (dx < 20 || dy < 20)) {
+          edges.push({ a: i, b: j });
+        }
+      }
+    }
+    // Seed pulses
+    for (let k = 0; k < 8; k++) spawnPulse();
+  }
+
+  function spawnPulse() {
+    if (!edges.length) return;
+    const e = edges[Math.floor(Math.random() * edges.length)];
+    pulses.push({ e, t: Math.random(), dir: Math.random() > 0.5 ? 1 : -1, speed: 0.002 + Math.random() * 0.003 });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // Draw edges
+    ctx.strokeStyle = COLOR;
+    ctx.lineWidth = 0.7;
+    for (const e of edges) {
+      const a = nodes[e.a], b = nodes[e.b];
+      ctx.globalAlpha = 0.1;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      // L-shaped trace
+      const mx = b.x, my = a.y;
+      ctx.lineTo(mx, my);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+    // Draw nodes
+    ctx.fillStyle = COLOR;
+    for (const n of nodes) {
+      ctx.globalAlpha = 0.18;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    // Draw pulses
+    for (let i = pulses.length - 1; i >= 0; i--) {
+      const p = pulses[i];
+      p.t += p.speed * p.dir;
+      if (p.t > 1 || p.t < 0) { pulses.splice(i, 1); spawnPulse(); continue; }
+      const a = nodes[p.e.a], b = nodes[p.e.b];
+      // Follow the L-shape
+      let x, y;
+      if (p.t < 0.5) {
+        const lt = p.t * 2;
+        x = a.x + (b.x - a.x) * lt;
+        y = a.y;
+      } else {
+        const lt = (p.t - 0.5) * 2;
+        x = b.x;
+        y = a.y + (b.y - a.y) * lt;
+      }
+      ctx.globalAlpha = 0.9;
+      ctx.fillStyle = COLOR;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = COLOR;
+      ctx.beginPath();
+      ctx.arc(x, y, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+/* ── SCROLL REVEAL ─────────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── STAT COUNTERS ─────────────────────────────────── */
+const counters = document.querySelectorAll('.stat-num');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.count);
+    const dur = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const pct = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - pct, 3);
+      el.textContent = Math.round(eased * target) + (target >= 100 ? '+' : '');
+      if (pct < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.6 });
+counters.forEach(c => counterObs.observe(c));
+</script>
+</body>
+</html>
