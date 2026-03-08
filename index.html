@@ -1008,9 +1008,9 @@
       <h2 class="section-title">Get In Touch</h2>
       <p class="contact-desc">I'm actively seeking individual-contributor ASIC Physical Design roles in product semiconductor teams. Open to conversations about the right opportunity — don't hesitate to reach out.</p>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:vrinda.karuvanchery@gmail.com">
-          <span>✉️</span> vrinda.karuvanchery@gmail.com
-        </a>
+        <button class="contact-link" id="email-btn" onclick="revealEmail()" style="cursor:pointer; background:none; border:1px solid var(--border);">
+          <span>✉️</span> <span id="email-label">Show Email</span>
+        </button>
         <button class="contact-link" id="phone-btn" onclick="revealPhone()" style="cursor:pointer; background:none; border:1px solid var(--border);">
           <span>📞</span> <span id="phone-label">Show Phone Number</span>
         </button>
@@ -1173,6 +1173,15 @@ const counterObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.6 });
 counters.forEach(c => counterObs.observe(c));
+
+/* ── EMAIL REVEAL ──────────────────────────────────── */
+function revealEmail() {
+  const btn = document.getElementById('email-btn');
+  const label = document.getElementById('email-label');
+  label.textContent = 'vrinda.karuvanchery@gmail.com';
+  btn.onclick = () => { window.location.href = 'mailto:vrinda.karuvanchery@gmail.com'; };
+  btn.style.borderColor = 'rgba(0,201,167,0.35)';
+}
 
 /* ── PHONE REVEAL ──────────────────────────────────── */
 function revealPhone() {
