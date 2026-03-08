@@ -603,8 +603,9 @@
       </div>
       <p class="hero-summary">Early-career ASIC Physical Design Engineer with a strong VLSI academic foundation and hands-on block-level implementation experience. Backed by a PhD in Electronics, I bring disciplined engineering thinking, deep understanding of physical effects, and a structured approach to timing, parasitics, and layout-driven trade-offs.</p>
       <div class="hero-ctas">
-        <a href="mailto:vrinda.karuvanchery@gmail.com" class="btn-primary">
-          ✉️ &nbsp;Get in Touch
+        <a href="https://github.com/vrinda-karuvanchery" target="_blank" rel="noopener" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile
         </a>
         <a href="https://www.linkedin.com/in/vrinda-karuvanchery/" target="_blank" rel="noopener" class="btn-outline">
           LinkedIn Profile →
@@ -1010,12 +1011,9 @@
         <a class="contact-link" href="mailto:vrinda.karuvanchery@gmail.com">
           <span>✉️</span> vrinda.karuvanchery@gmail.com
         </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/vrinda-karuvanchery/" target="_blank" rel="noopener">
-          <span>💼</span> LinkedIn Profile
-        </a>
-        <a class="contact-link" href="tel:+919916679867">
-          <span>📞</span> +91 99166 79867
-        </a>
+        <button class="contact-link" id="phone-btn" onclick="revealPhone()" style="cursor:pointer; background:none; border:1px solid var(--border);">
+          <span>📞</span> <span id="phone-label">Show Phone Number</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1175,6 +1173,15 @@ const counterObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.6 });
 counters.forEach(c => counterObs.observe(c));
+
+/* ── PHONE REVEAL ──────────────────────────────────── */
+function revealPhone() {
+  const btn = document.getElementById('phone-btn');
+  const label = document.getElementById('phone-label');
+  label.textContent = '+91 99166 79867';
+  btn.onclick = () => { window.location.href = 'tel:+919916679867'; };
+  btn.style.borderColor = 'rgba(0,201,167,0.35)';
+}
 </script>
 </body>
 </html>
