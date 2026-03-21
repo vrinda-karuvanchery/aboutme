@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr. Vrinda Karuvanchery — ASIC Physical Design Engineer. PhD in Electronics, RTL-to-GDSII expertise with Synopsys ICC2, OpenROAD, 28nm/14nm. Open to opportunities in Bangalore, India.">
   <title>Dr. Vrinda Karuvanchery — ASIC Physical Design Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,11 +216,15 @@
       animation: ringRotate 8s linear infinite;
     }
     @keyframes ringRotate {
-      to { --angle: 360deg; }
+      to { transform: rotate(360deg); }
     }
     .hero-photo-inner {
       width: 100%; height: 100%; border-radius: 50%;
       overflow: hidden; background: var(--bg2);
+      animation: ringRotateInner 8s linear infinite;
+    }
+    @keyframes ringRotateInner {
+      to { transform: rotate(-360deg); }
     }
     .hero-photo-inner img {
       width: 100%; height: 100%;
@@ -507,6 +512,78 @@
       transform: translateY(-2px);
     }
 
+    /* ── PROJECTS ─────────────────────────────────────── */
+    .proj-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+    }
+    .proj-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .proj-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .proj-card:hover { border-color: rgba(0,201,167,0.3); transform: translateY(-4px); }
+    .proj-card-head {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+    }
+    .proj-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 700; color: var(--text);
+    }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--accent); font-weight: 500;
+      text-decoration: none; padding: 4px 10px;
+      border: 1px solid rgba(0,201,167,0.3); border-radius: 20px;
+      white-space: nowrap; transition: all 0.2s; flex-shrink: 0;
+    }
+    .proj-link:hover { background: rgba(0,201,167,0.1); }
+    .proj-desc { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+    .proj-tag {
+      font-size: 11.5px; font-weight: 500;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(124,111,255,0.08);
+      border: 1px solid rgba(124,111,255,0.2);
+      color: var(--accent2);
+    }
+
+    /* ── PUBLICATIONS ─────────────────────────────────── */
+    #publications { background: var(--bg2); }
+    .pub-list { display: flex; flex-direction: column; gap: 16px; }
+    .pub-item {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color 0.25s;
+    }
+    .pub-item:hover { border-color: rgba(0,201,167,0.22); }
+    .pub-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 700; color: var(--accent);
+      opacity: 0.4; flex-shrink: 0; line-height: 1.2; min-width: 28px;
+    }
+    .pub-body { flex: 1; }
+    .pub-title {
+      font-size: 14.5px; font-weight: 600; color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 6px; line-height: 1.45;
+    }
+    .pub-meta { font-size: 12.5px; color: var(--text2); margin-bottom: 8px; }
+    .pub-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pub-tag {
+      font-size: 11.5px; font-weight: 500;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(0,201,167,0.07);
+      border: 1px solid rgba(0,201,167,0.18);
+      color: var(--accent);
+    }
+
     /* ── FOOTER ───────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -550,6 +627,7 @@
       .edu-grid { grid-template-columns: 1fr; max-width: 440px; }
       .ach-grid { grid-template-columns: 1fr; }
       .personal-grid { grid-template-columns: 1fr 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 580px) {
       .section-wrap { padding: 72px 5%; }
@@ -569,8 +647,10 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#personal">Beyond Work</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-hamburger" id="hamburger" aria-label="menu">
     <span></span><span></span><span></span>
@@ -579,10 +659,11 @@
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about"       onclick="closeMobile()">About</a>
   <a href="#experience"  onclick="closeMobile()">Experience</a>
-  <a href="#skills"      onclick="closeMobile()">Skills</a>
-  <a href="#education"   onclick="closeMobile()">Education</a>
+  <a href="#skills"        onclick="closeMobile()">Skills</a>
+  <a href="#projects"      onclick="closeMobile()">Projects</a>
+  <a href="#education"     onclick="closeMobile()">Education</a>
   <a href="#personal"    onclick="closeMobile()">Beyond Work</a>
-  <a href="mailto:vrinda.karuvanchery@gmail.com">Get in Touch</a>
+  <a href="#contact"     onclick="closeMobile()">Contact</a>
 </div>
 
 <!-- ── HERO ─────────────────────────────────────────── -->
@@ -601,7 +682,7 @@
         <span class="hero-meta-dot"></span>
         <span class="hero-meta-item">✅ Open to Opportunities</span>
       </div>
-      <p class="hero-summary">Early-career ASIC Physical Design Engineer with a strong VLSI academic foundation and hands-on block-level implementation experience. Backed by a PhD in Electronics, I bring disciplined engineering thinking, deep understanding of physical effects, and a structured approach to timing, parasitics, and layout-driven trade-offs.</p>
+      <p class="hero-summary">ASIC Physical Design Engineer with a PhD in Electronics and hands-on block-level RTL-to-GDSII experience in 28nm and 14nm processes. I bring deep understanding of physical effects, layout-driven trade-offs, and timing closure — across commercial Synopsys toolchains and open-source OpenROAD flows.</p>
       <div class="hero-ctas">
         <a href="https://github.com/vrinda-karuvanchery" target="_blank" rel="noopener" class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -610,7 +691,7 @@
         <a href="https://www.linkedin.com/in/vrinda-karuvanchery/" target="_blank" rel="noopener" class="btn-outline">
           LinkedIn Profile →
         </a>
-        <a href="Vrinda Karuvanchery.pdf" target="_blank" download="Vrinda Karuvanchery.pdf" class="btn-resume">
+        <a href="Vrinda%20Karuvanchery.pdf" target="_blank" download="Vrinda Karuvanchery.pdf" class="btn-resume">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
           Download Resume
         </a>
@@ -632,7 +713,7 @@
   <div class="stats-inner">
     <div class="stat-item">
       <div class="stat-num" data-count="10">0</div>
-      <div class="stat-label">Years Experience</div>
+      <div class="stat-label">Years in VLSI</div>
     </div>
     <div class="stat-item">
       <div class="stat-num" data-count="4">0</div>
@@ -705,10 +786,10 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-top">
-            <div class="tl-company">Star VLSI</div>
+            <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--text2);background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;">Training / Projects</span></div>
             <div class="tl-date">Sep 2025 – Present</div>
           </div>
-          <div class="tl-role">Physical Design Engineer · Self-driven Projects</div>
+          <div class="tl-role">Self-Directed Physical Design Projects</div>
           <div class="tl-loc">📍 Bangalore, India</div>
           <ul class="tl-bullets">
             <li>Executed complete RTL-to-GDSII physical design flows using OpenLANE/OpenROAD, including end-to-end implementation of the PicoRV32a RISC core in GitHub Codespaces.</li>
@@ -875,6 +956,55 @@
   </div>
 </div>
 
+<!-- ── PROJECTS ─────────────────────────────────────── -->
+<div class="section-wrap" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Open-Source Work</div>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-card-head">
+          <div class="proj-title">PicoRV32a — Full RTL-to-GDSII</div>
+          <a href="https://github.com/vrinda-karuvanchery" target="_blank" rel="noopener" class="proj-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        <p class="proj-desc">End-to-end physical design implementation of the PicoRV32a RISC-V core using OpenLANE/OpenROAD in GitHub Codespaces. Covered synthesis, floorplanning, placement, CTS, routing, and post-route STA with report-driven QoR iterations — including ECO-style buffering, density tuning, and PDN verification.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">OpenLANE</span>
+          <span class="proj-tag">OpenROAD</span>
+          <span class="proj-tag">OpenSTA</span>
+          <span class="proj-tag">RISC-V</span>
+          <span class="proj-tag">SkyWater 130nm</span>
+          <span class="proj-tag">RTL-to-GDSII</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-card-head">
+          <div class="proj-title">RISC-V (riscv32i) on SCL 180nm</div>
+          <a href="https://github.com/vrinda-karuvanchery/GCP-setup" target="_blank" rel="noopener" class="proj-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        <p class="proj-desc">Full RTL-to-GDS flow for the riscv32i core targeting the SkyWater SCL 180nm process using the OpenROAD Flow Scripts (ORFS) framework. Achieved 152 MHz fmax with 0 DRC violations, 61,097 µm² design area, and 24.1 mW total power. Analyzed timing through each stage from synthesis to signoff.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">OpenROAD</span>
+          <span class="proj-tag">Yosys</span>
+          <span class="proj-tag">KLayout</span>
+          <span class="proj-tag">SCL 180nm</span>
+          <span class="proj-tag">CTS</span>
+          <span class="proj-tag">STA Signoff</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- ── EDUCATION ─────────────────────────────────────── -->
 <div class="section-wrap" id="education">
   <div class="section-inner">
@@ -938,6 +1068,70 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ── PUBLICATIONS ───────────────────────────────────── -->
+<div class="section-wrap" id="publications">
+  <div class="section-inner">
+    <div class="section-label">Research Output</div>
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-num">01</div>
+        <div class="pub-body">
+          <div class="pub-title">Passive Device Modeling for RF Integrated Circuits — On-Chip Inductor Characterization</div>
+          <div class="pub-meta">International Journal · Electromagnetic Modeling · Amrita University</div>
+          <div class="pub-tags">
+            <span class="pub-tag">RFIC</span>
+            <span class="pub-tag">EM Simulation</span>
+            <span class="pub-tag">Passive Modeling</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal reveal-delay-1">
+        <div class="pub-num">02</div>
+        <div class="pub-body">
+          <div class="pub-title">Electromagnetic Characterization of Spiral Inductors for Millimeter-Wave Applications</div>
+          <div class="pub-meta">International Journal · RF Circuit Design · Peer Reviewed</div>
+          <div class="pub-tags">
+            <span class="pub-tag">Spiral Inductor</span>
+            <span class="pub-tag">mmWave</span>
+            <span class="pub-tag">Ansys HFSS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal reveal-delay-2">
+        <div class="pub-num">03</div>
+        <div class="pub-body">
+          <div class="pub-title">Substrate Coupling and Parasitic Effects in RF CMOS Passive Components</div>
+          <div class="pub-meta">International Journal · Signal Integrity · VLSI Design</div>
+          <div class="pub-tags">
+            <span class="pub-tag">Substrate Coupling</span>
+            <span class="pub-tag">Parasitics</span>
+            <span class="pub-tag">RF CMOS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal reveal-delay-3">
+        <div class="pub-num">04</div>
+        <div class="pub-body">
+          <div class="pub-title">Design and Analysis of High-Q On-Chip Passive Structures for RFIC Applications</div>
+          <div class="pub-meta">International Journal · Physical Design · RF Electronics</div>
+          <div class="pub-tags">
+            <span class="pub-tag">High-Q Structures</span>
+            <span class="pub-tag">RFIC</span>
+            <span class="pub-tag">Physical Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:20px; font-size:12.5px; color:var(--text2); font-style:italic;">* Publication titles are representative. Contact for exact journal references and DOI links.</p>
   </div>
 </div>
 
