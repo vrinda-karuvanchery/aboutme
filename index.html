@@ -432,6 +432,8 @@
     .skills-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
+    @media (max-width: 960px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .skills-grid { grid-template-columns: 1fr; } }
     .skill-cat {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 14px; padding: 26px;
@@ -893,22 +895,31 @@
       <div class="skill-cat reveal">
         <div class="skill-cat-head">
           <div class="skill-cat-head-icon">🔧</div>
-          ASIC Physical Design
+          Physical Design
         </div>
         <div class="skill-tags">
           <span class="skill-tag">Floorplanning</span>
           <span class="skill-tag">Placement & Routing</span>
           <span class="skill-tag">Clock Tree Synthesis</span>
-          <span class="skill-tag">Static Timing Analysis</span>
-          <span class="skill-tag">MCMM / Multi-Corner</span>
-          <span class="skill-tag">ECO Iterations</span>
+          <span class="skill-tag">ECO Flows</span>
           <span class="skill-tag">PDN Design</span>
-          <span class="skill-tag">DRC / LVS</span>
-          <span class="skill-tag">28nm CMOS</span>
-          <span class="skill-tag">14nm FinFET</span>
-          <span class="skill-tag">SkyWater 130nm</span>
-          <span class="skill-tag">Signal Integrity</span>
-          <span class="skill-tag">Parasitic Extraction</span>
+          <span class="skill-tag">Hierarchical Block-Level</span>
+          <span class="skill-tag">Physical Verification</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-1">
+        <div class="skill-cat-head">
+          <div class="skill-cat-head-icon">⏱️</div>
+          Timing & Signoff
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Static Timing Analysis</span>
+          <span class="skill-tag">Setup / Hold Analysis</span>
+          <span class="skill-tag">MCMM Multi-Corner</span>
+          <span class="skill-tag">WNS / TNS Closure</span>
+          <span class="skill-tag">OCV Awareness</span>
+          <span class="skill-tag">SDC Constraints</span>
+          <span class="skill-tag">DRC / LVS / Antenna</span>
           <span class="skill-tag">IR Drop Awareness</span>
         </div>
       </div>
@@ -922,17 +933,30 @@
           <span class="skill-tag">PrimeTime</span>
           <span class="skill-tag">StarRC</span>
           <span class="skill-tag">Design Compiler</span>
-          <span class="skill-tag">Calibre DRC/LVS</span>
-          <span class="skill-tag">OpenLANE</span>
+          <span class="skill-tag">Mentor Calibre</span>
           <span class="skill-tag">OpenROAD</span>
+          <span class="skill-tag">OpenLANE</span>
           <span class="skill-tag">OpenSTA</span>
           <span class="skill-tag">Yosys</span>
           <span class="skill-tag">KLayout</span>
           <span class="skill-tag">Magic</span>
-          <span class="skill-tag">Ansys HFSS</span>
         </div>
       </div>
-      <div class="skill-cat reveal reveal-delay-4">
+      <div class="skill-cat reveal reveal-delay-2">
+        <div class="skill-cat-head">
+          <div class="skill-cat-head-icon">🔬</div>
+          Technology & Flows
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">28nm CMOS</span>
+          <span class="skill-tag">14nm FinFET</span>
+          <span class="skill-tag">SkyWater 130nm</span>
+          <span class="skill-tag">LEF / DEF / GDS</span>
+          <span class="skill-tag">UPF / Power Intent</span>
+          <span class="skill-tag">RTL Handoff to Signoff</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-3">
         <div class="skill-cat-head">
           <div class="skill-cat-head-icon">⌨️</div>
           Scripting & Automation
@@ -943,7 +967,20 @@
           <span class="skill-tag">GNU Make / ORFS</span>
           <span class="skill-tag">Git / GitHub Actions</span>
           <span class="skill-tag">QoR Report Extraction</span>
-          <span class="skill-tag">STA Debug Scripting</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-4">
+        <div class="skill-cat-head">
+          <div class="skill-cat-head-icon">📡</div>
+          Physical Modeling
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Ansys HFSS — 500+ hrs</span>
+          <span class="skill-tag">Passive Device Modeling</span>
+          <span class="skill-tag">Parasitic Extraction</span>
+          <span class="skill-tag">Signal Integrity</span>
+          <span class="skill-tag">Substrate Coupling</span>
+          <span class="skill-tag">EM Characterisation</span>
         </div>
       </div>
     </div>
@@ -1020,6 +1057,7 @@
               <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs at 28nm CMOS using Synopsys Design Compiler (synthesis, SDC), ICC2 (floorplan, placement, routing, CTS), PrimeTime (MCMM STA, setup/hold closure), and StarRC (parasitic extraction).</li>
               <li>Executed floorplanning, standard-cell placement, congestion-aware routing, and CTS with focus on timing-driven implementation and structured closure; interpreted PrimeTime reports to identify critical paths and drive ECO iterations.</li>
               <li>Gained 14nm FinFET awareness — parasitics, double-patterning constraints, clock skew sensitivity, and power–timing trade-offs at advanced nodes.</li>
+              <li>Automated PD flow execution, QoR report extraction, and timing summary collation using TCL scripting.</li>
             </ul>
           </div>
         </div>
@@ -1246,7 +1284,7 @@
     <div class="contact-inner reveal">
       <div class="section-label">Let's Connect</div>
       <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-desc">I'm actively seeking individual-contributor ASIC Physical Design roles in product semiconductor teams. Open to conversations about the right opportunity — don't hesitate to reach out.</p>
+      <p class="contact-desc">I'm actively seeking individual-contributor ASIC Physical Design roles in product semiconductor teams — Apple Silicon, NVIDIA, Qualcomm, Intel, AMD, Broadcom, and beyond. Open to conversations about the right opportunity — don't hesitate to reach out.</p>
       <div class="contact-links">
         <button class="contact-link" id="email-btn" onclick="revealEmail()" style="cursor:pointer; background:none; border:1px solid var(--border);">
           <span>✉️</span> <span id="email-label">Show Email</span>
