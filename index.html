@@ -645,8 +645,8 @@
   <a class="nav-logo" href="#hero">VK.</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#personal">Beyond Work</a></li>
@@ -658,9 +658,9 @@
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about"       onclick="closeMobile()">About</a>
+  <a href="#skills"      onclick="closeMobile()">Skills</a>
   <a href="#experience"  onclick="closeMobile()">Experience</a>
-  <a href="#skills"        onclick="closeMobile()">Skills</a>
-  <a href="#projects"      onclick="closeMobile()">Projects</a>
+  <a href="#projects"    onclick="closeMobile()">Projects</a>
   <a href="#education"     onclick="closeMobile()">Education</a>
   <a href="#personal"    onclick="closeMobile()">Beyond Work</a>
   <a href="#contact"     onclick="closeMobile()">Contact</a>
@@ -736,154 +736,41 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="section-label">About Me</div>
-        <h2 class="section-title">Engineer.<br>Researcher.<br>Educator.</h2>
-        <p>I'm a Physical Design engineer transitioning from a strong research and academic background into semiconductor product teams. With a PhD in Electronics and over a decade spanning research, teaching, and industry-aligned training, I bring both depth and discipline to every challenge.</p>
-        <p>My hands-on exposure covers complete RTL-to-GDSII execution using both commercial Synopsys tools and open-source OpenLANE/OpenROAD toolchains. I approach problems with structured implementation reasoning — analyzing timing, parasitics, and layout-driven trade-offs with precision.</p>
+        <h2 class="section-title">Physical Design<br>Engineer.</h2>
+        <p>I'm an ASIC Physical Design Engineer with hands-on, end-to-end RTL-to-GDSII experience across both commercial Synopsys tools (ICC2, PrimeTime, StarRC) at 28nm and open-source OpenROAD/OpenLANE flows on SkyWater 130nm. I approach every stage — floorplan through signoff — with structured, report-driven reasoning.</p>
+        <p>My PhD in Electronics adds depth in EM simulation and parasitic modeling, directly reinforcing physical intuition for signal integrity, layout-driven trade-offs, and timing closure — not an academic detour, but a genuine technical edge.</p>
         <p>I'm actively seeking an individual-contributor Physical Design role in product semiconductor teams, with a goal of growing into full block ownership and contributing to meaningful silicon.</p>
       </div>
       <div class="highlight-stack reveal reveal-delay-2">
         <div class="highlight-card">
+          <div class="h-icon">⚡</div>
+          <div>
+            <h4>Synopsys Toolchain — 28nm</h4>
+            <p>Block-level RTL-to-GDSII with ICC2, PrimeTime, StarRC, Design Compiler. MCMM STA, ECO flows, DRC/LVS signoff.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="h-icon">🔁</div>
+          <div>
+            <h4>OpenROAD / OpenLANE Flow</h4>
+            <p>Full PicoRV32a implementation on SkyWater 130nm — 152 MHz, 0 DRC violations, complete signoff.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
           <div class="h-icon">🎓</div>
           <div>
             <h4>PhD in Electronics</h4>
-            <p>Passive Device Modeling for RFICs — Amrita University. 7+ years of rigorous academic research.</p>
+            <p>500+ hours Ansys HFSS simulation — parasitics, EM modeling, signal integrity. Directly applicable to PD.</p>
           </div>
         </div>
         <div class="highlight-card">
           <div class="h-icon">📄</div>
           <div>
             <h4>Research & Publications</h4>
-            <p>4 peer-reviewed international journal papers on electromagnetic modeling and RF integrated circuits.</p>
-          </div>
-        </div>
-        <div class="highlight-card">
-          <div class="h-icon">🌍</div>
-          <div>
-            <h4>International Exposure</h4>
-            <p>Sessional Lecturer at Basingstoke College of Engineering, London. Presented at 5 global conferences.</p>
-          </div>
-        </div>
-        <div class="highlight-card">
-          <div class="h-icon">⚡</div>
-          <div>
-            <h4>Industry-Grade Training</h4>
-            <p>Block-level PD experience with Synopsys ICC2, PrimeTime, StarRC under 28nm and 14nm FinFET.</p>
+            <p>4 peer-reviewed journal papers, 5 international conferences — rigorous analytical and documentation discipline.</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── EXPERIENCE ─────────────────────────────────────── -->
-<div class="section-wrap" id="experience">
-  <div class="section-inner">
-    <div class="section-label">Career Timeline</div>
-    <h2 class="section-title">Work Experience</h2>
-    <div class="timeline">
-
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--text2);background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;">Training / Projects</span></div>
-            <div class="tl-date">Sep 2025 – Present</div>
-          </div>
-          <div class="tl-role">Self-Directed Physical Design Projects</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Executed complete RTL-to-GDSII physical design flows using OpenLANE/OpenROAD, including end-to-end implementation of the PicoRV32a RISC core in GitHub Codespaces.</li>
-            <li>Performed report-driven iterations across synthesis, floorplanning, placement, CTS, routing, and STA — analyzing WNS/TNS, clock skew, congestion, utilization, and QoR metrics.</li>
-            <li>Applied ECO-style fixes including buffering, resizing, density tuning, and selective path cleanup to study timing improvement and placement-driven sensitivities.</li>
-            <li>Validated post-route timing using OpenSTA and inspected PDN (VDD/VSS) topology to ensure physical integrity and signoff-level correctness.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">PES University</div>
-            <div class="tl-date">Sep 2024 – Feb 2025</div>
-          </div>
-          <div class="tl-role">Assistant Professor</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Taught core Electronics and VLSI subjects with strong hands-on engagement with circuit behavior, devices, and system-level design concepts.</li>
-            <li>Guided students on industry-aligned technical projects, reinforcing applied engineering thinking alongside fundamentals.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-2">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">Basingstoke College of Engineering</div>
-            <div class="tl-date">Aug 2023 – Jun 2024</div>
-          </div>
-          <div class="tl-role">Sessional Lecturer</div>
-          <div class="tl-loc">📍 London, United Kingdom</div>
-          <ul class="tl-bullets">
-            <li>Delivered structured technical instruction aligned with applied engineering outcomes in the UK academic system.</li>
-            <li>Mentored students on project-based learning emphasizing correctness, rigor, and execution discipline.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">ChipEdge Technologies Pvt Ltd</div>
-            <div class="tl-date">Jan 2023 – Jul 2023</div>
-          </div>
-          <div class="tl-role">Physical Design Trainee</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs using Synopsys Design Compiler, ICC2, PrimeTime, and StarRC, following industry-standard sequencing.</li>
-            <li>Executed floorplanning, placement, routing, and clock tree synthesis with focus on timing-driven implementation, congestion awareness, and structured closure.</li>
-            <li>Performed static timing analysis including setup/hold checks and MCMM fundamentals, interpreting reports to identify critical paths and closure bottlenecks.</li>
-            <li>Gained exposure to 14nm FinFET concepts — parasitics, clock skew, and power–timing trade-offs.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-2">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">Amrita Vishwa Vidya Peetham</div>
-            <div class="tl-date">Oct 2015 – Dec 2022</div>
-          </div>
-          <div class="tl-role">Research Scholar (PhD)</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Conducted advanced research in RF integrated circuits and passive device modeling for 7+ years, strengthening understanding of layout-dependent behavior and parasitic effects.</li>
-            <li>Executed 500+ hours of electromagnetic simulations using Ansys HFSS, reinforcing physical intuition relevant to signal integrity and high-frequency effects.</li>
-            <li>Published 4 peer-reviewed journal papers and presented at 5 international semiconductor-focused conferences.</li>
-            <li>Developed strong analytical, documentation, and problem-decomposition skills applicable to design debug and root-cause analysis.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">T. John College of Engineering</div>
-            <div class="tl-date">Aug 2013 – Jul 2014</div>
-          </div>
-          <div class="tl-role">Assistant Professor</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Delivered engaging lectures on Microwave Devices and Electrical Circuits, integrating interactive teaching techniques.</li>
-            <li>Led curriculum refinement to enhance student comprehension and measurable academic performance.</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
@@ -952,6 +839,119 @@
           <span class="skill-tag">Engineering Discipline</span>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE ─────────────────────────────────────── -->
+<div class="section-wrap" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career Timeline</div>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--text2);background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;">Training / Projects</span></div>
+            <div class="tl-date">Sep 2025 – Present</div>
+          </div>
+          <div class="tl-role">Self-Directed Physical Design Projects</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Executed complete RTL-to-GDSII physical design flows using OpenLANE/OpenROAD, including end-to-end implementation of the PicoRV32a RISC core in GitHub Codespaces.</li>
+            <li>Performed report-driven iterations across synthesis, floorplanning, placement, CTS, routing, and STA — analyzing WNS/TNS, clock skew, congestion, utilization, and QoR metrics.</li>
+            <li>Applied ECO-style fixes including buffering, resizing, density tuning, and selective path cleanup to study timing improvement and placement-driven sensitivities.</li>
+            <li>Validated post-route timing using OpenSTA and inspected PDN (VDD/VSS) topology to ensure physical integrity and signoff-level correctness.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">ChipEdge Technologies Pvt Ltd</div>
+            <div class="tl-date">Jan 2023 – Jul 2023</div>
+          </div>
+          <div class="tl-role">Physical Design Trainee</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs using Synopsys Design Compiler, ICC2, PrimeTime, and StarRC, following industry-standard sequencing.</li>
+            <li>Executed floorplanning, placement, routing, and clock tree synthesis with focus on timing-driven implementation, congestion awareness, and structured closure.</li>
+            <li>Performed static timing analysis including setup/hold checks and MCMM fundamentals, interpreting reports to identify critical paths and closure bottlenecks.</li>
+            <li>Gained exposure to 14nm FinFET concepts — parasitics, clock skew, and power–timing trade-offs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">Amrita Vishwa Vidya Peetham</div>
+            <div class="tl-date">Oct 2015 – Dec 2022</div>
+          </div>
+          <div class="tl-role">Research Scholar (PhD)</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Conducted advanced research in RF integrated circuits and passive device modeling for 7+ years, strengthening understanding of layout-dependent behavior and parasitic effects.</li>
+            <li>Executed 500+ hours of electromagnetic simulations using Ansys HFSS, reinforcing physical intuition relevant to signal integrity and high-frequency effects.</li>
+            <li>Published 4 peer-reviewed journal papers and presented at 5 international semiconductor-focused conferences.</li>
+            <li>Developed strong analytical, documentation, and problem-decomposition skills applicable to design debug and root-cause analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">PES University</div>
+            <div class="tl-date">Sep 2024 – Feb 2025</div>
+          </div>
+          <div class="tl-role">Assistant Professor</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Taught core Electronics and VLSI subjects with strong hands-on engagement with circuit behavior, devices, and system-level design concepts.</li>
+            <li>Guided students on industry-aligned technical projects, reinforcing applied engineering thinking alongside fundamentals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">Basingstoke College of Engineering</div>
+            <div class="tl-date">Aug 2023 – Jun 2024</div>
+          </div>
+          <div class="tl-role">Sessional Lecturer</div>
+          <div class="tl-loc">📍 London, United Kingdom</div>
+          <ul class="tl-bullets">
+            <li>Delivered structured technical instruction aligned with applied engineering outcomes in the UK academic system.</li>
+            <li>Mentored students on project-based learning emphasizing correctness, rigor, and execution discipline.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-company">T. John College of Engineering</div>
+            <div class="tl-date">Aug 2013 – Jul 2014</div>
+          </div>
+          <div class="tl-role">Assistant Professor</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Delivered engaging lectures on Microwave Devices and Electrical Circuits, integrating interactive teaching techniques.</li>
+            <li>Led curriculum refinement to enhance student comprehension and measurable academic performance.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
