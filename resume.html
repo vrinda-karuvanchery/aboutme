@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vrinda Karuvanchery — Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10.2pt;
+      line-height: 1.45;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 36px 44px;
+    }
+
+    /* ── HEADER ── */
+    .header { text-align: center; margin-bottom: 14px; }
+    .header h1 {
+      font-size: 22pt; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #0d0d0d; margin-bottom: 4px;
+    }
+    .header .tagline {
+      font-size: 8.5pt; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #2563a8; margin-bottom: 7px;
+    }
+    .header .contacts {
+      font-size: 9pt; color: #333; line-height: 1.6;
+    }
+    .header .contacts a { color: #2563a8; text-decoration: none; }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1.5px solid #1a1a1a; margin: 10px 0 8px; }
+    hr.light { border-top: 0.5px solid #ccc; margin: 7px 0; }
+
+    /* ── SECTION HEADING ── */
+    .section-title {
+      font-size: 9pt; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #0d0d0d;
+      margin-bottom: 6px; margin-top: 12px;
+    }
+
+    /* ── SUMMARY ── */
+    .summary { font-size: 9.8pt; color: #222; line-height: 1.55; }
+
+    /* ── SKILLS ── */
+    .skills-block p {
+      font-size: 9.5pt; color: #222; line-height: 1.55; margin-bottom: 3px;
+    }
+    .skills-block p strong { color: #0d0d0d; font-weight: 600; }
+
+    /* ── EXPERIENCE ── */
+    .exp-item { margin-bottom: 11px; }
+    .exp-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px;
+    }
+    .exp-title { font-size: 10pt; font-weight: 700; color: #0d0d0d; }
+    .exp-date { font-size: 9pt; color: #444; white-space: nowrap; font-style: italic; }
+    .exp-org { font-size: 9pt; color: #2563a8; font-weight: 500; margin-bottom: 4px; }
+    .exp-signoff {
+      font-size: 9pt; font-weight: 600; color: #1a5c3a;
+      background: #f0faf5; border-left: 3px solid #2bab6f;
+      padding: 4px 10px; border-radius: 2px;
+      margin: 5px 0 5px; display: inline-block;
+      font-family: 'Courier New', monospace;
+    }
+    ul.bullets { padding-left: 14px; margin-top: 3px; }
+    ul.bullets li {
+      font-size: 9.5pt; color: #222; line-height: 1.5;
+      margin-bottom: 2.5px; list-style-type: disc;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 5px; gap: 12px;
+    }
+    .edu-left { }
+    .edu-degree { font-size: 9.8pt; font-weight: 700; color: #0d0d0d; }
+    .edu-field { font-size: 9pt; color: #2563a8; font-weight: 500; }
+    .edu-univ { font-size: 9pt; color: #555; }
+    .edu-date { font-size: 9pt; color: #444; white-space: nowrap; font-style: italic; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item { font-size: 9.5pt; color: #222; line-height: 1.5; margin-bottom: 3px; }
+    .pub-item::before { content: '• '; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { padding: 24px 36px; max-width: 100%; }
+      @page { margin: 1.2cm 1.4cm; size: A4; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Vrinda Karuvanchery</h1>
+  <div class="tagline">ASIC Physical Design Engineer &nbsp;·&nbsp; RTL-to-GDSII Implementation &nbsp;·&nbsp; 28nm CMOS</div>
+  <div class="contacts">
+    +91 99166 79867 &nbsp;|&nbsp; vrinda.karuvanchery@gmail.com &nbsp;|&nbsp; Bangalore, India &nbsp;|&nbsp;
+    <a href="https://linkedin.com/in/vrinda-karuvanchery">linkedin.com/in/vrinda-karuvanchery</a> &nbsp;|&nbsp;
+    <a href="https://vrinda-karuvanchery.github.io/aboutme">vrinda-karuvanchery.github.io/aboutme</a>
+  </div>
+</div>
+
+<hr>
+
+<!-- SUMMARY -->
+<div class="section-title">Professional Summary</div>
+<p class="summary">
+  ASIC Physical Design Engineer with a PhD in Electronics and end-to-end RTL-to-GDSII implementation experience using the Synopsys toolchain (ICC2, PrimeTime, StarRC, Design Compiler) at 28nm CMOS and open-source EDA (OpenROAD / OpenLANE). Hands-on across floorplanning, placement &amp; routing, clock tree synthesis, timing closure, ECO flows, MCMM STA, PDN design, and post-route signoff. Brings 500+ hours of EM simulation depth (Ansys HFSS) — direct physical intuition for parasitics, signal integrity, and layout-driven trade-offs. Seeking an individual-contributor Physical Design role at Apple Silicon, NVIDIA, Qualcomm, Intel, AMD, or Broadcom — to grow into full block ownership.
+</p>
+
+<hr>
+
+<!-- SKILLS -->
+<div class="section-title">Core Technical Skills</div>
+<div class="skills-block">
+  <p><strong>Physical Design:</strong> Floorplanning, Placement &amp; Routing (P&amp;R), Clock Tree Synthesis (CTS), ECO Flows, PDN Design, Hierarchical Block-Level Implementation, Physical Verification</p>
+  <p><strong>Timing &amp; Signoff:</strong> Static Timing Analysis (STA), Setup/Hold Analysis, MCMM / Multi-Corner Multi-Mode, WNS/TNS Closure, OCV Awareness, Post-Route Signoff, DRC / LVS / Antenna Repair, SDC Constraints, IR Drop Awareness</p>
+  <p><strong>EDA Tools:</strong> Synopsys ICC2, PrimeTime, StarRC, Design Compiler &nbsp;·&nbsp; Mentor Calibre (DRC/LVS) &nbsp;·&nbsp; OpenROAD, OpenLANE, OpenSTA, Yosys, KLayout, Magic</p>
+  <p><strong>Technology &amp; Flows:</strong> 28nm CMOS (primary) &nbsp;·&nbsp; 14nm FinFET (awareness) &nbsp;·&nbsp; SkyWater 130nm &nbsp;·&nbsp; LEF / DEF / GDS &nbsp;·&nbsp; UPF / Power Intent Awareness &nbsp;·&nbsp; RTL Handoff to Physical Signoff</p>
+  <p><strong>Scripting:</strong> TCL (PD flow automation, QoR report extraction) &nbsp;·&nbsp; Shell &nbsp;·&nbsp; GNU Make (OpenROAD ORFS) &nbsp;·&nbsp; Git / GitHub Actions</p>
+  <p><strong>Physical Modeling:</strong> Ansys HFSS — 500+ hours EM simulation &nbsp;·&nbsp; Behavioural Modelling using Differential Evolution &nbsp;·&nbsp; FSS Design &nbsp;·&nbsp; Passive Device Modeling &nbsp;·&nbsp; Parasitic Extraction (StarRC) &nbsp;·&nbsp; Signal Integrity &amp; Substrate Coupling Awareness</p>
+</div>
+
+<hr>
+
+<!-- EXPERIENCE -->
+<div class="section-title">Professional Experience</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Physical Design Engineer — Synopsys ICC2 / PrimeTime Flow</div>
+    <div class="exp-date">Sep 2025 – Present</div>
+  </div>
+  <div class="exp-org">Star VLSI &nbsp;·&nbsp; Bangalore, India</div>
+  <ul class="bullets">
+    <li>Executing RTL-to-GDS flows with Synopsys ICC2 at 28nm CMOS — synthesis integration, floorplanning, placement, CTS, and detailed routing; achieving timing closure through WNS/TNS tracking, congestion-driven optimisation, and ECO-style resizing.</li>
+    <li>Performing multi-corner MCMM timing validation with PrimeTime — analysing setup/hold margins under OCV, leveraging SDC constraints for critical path iteration and clock tree optimisation.</li>
+    <li>Validating signoff deliverables: DRC/LVS verification, parasitic extraction inspection, and final GDS generation with clean design-rule compliance.</li>
+  </ul>
+</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Physical Design — VSD Squadron 6-Week RTL-to-GDS Program</div>
+    <div class="exp-date">Feb 2026 – Mar 2026</div>
+  </div>
+  <div class="exp-org">VSD / vlsisystemdesign.com &nbsp;·&nbsp; Bangalore, India &nbsp;·&nbsp; (Concurrent with Star VLSI)</div>
+  <div class="exp-signoff">fmax 152 MHz &nbsp;·&nbsp; WNS +0.18 ns ✓ &nbsp;·&nbsp; DRC 0 violations &nbsp;·&nbsp; Total Power 24.1 mW &nbsp;·&nbsp; Area 61,097 µm²</div>
+  <ul class="bullets">
+    <li>Executed complete RTL-to-GDSII of PicoRV32a RISC-V core on SkyWater 130nm HD PDK using OpenROAD / OpenLANE — synthesis (Yosys), floorplanning, placement, CTS (TritonCTS), detailed routing, and post-route STA; ECO iterations (buffering, resizing, density tuning) for timing closure; 0 DRC violations at signoff.</li>
+    <li>Drove structured, report-driven iteration across all PD stages — analysing WNS/TNS trends, clock skew, congestion maps, and utilisation at each stage.</li>
+    <li>Independently implemented the VSDSquadron SoC user project wrapper RTL-to-GDS at 100 MHz — resolved full design hierarchy, traced RTL dependencies, configured ORFS, authored SDC constraints, and completed all stages through final GDS.</li>
+    <li>Performed Gate-Level Simulation (GLS) of VSDSquadron SoC blocks — validated RTL-to-GLS functional equivalence across standalone and Caravel-integrated testcases; confirmed timing behaviour using GTKWave waveform analysis.</li>
+    <li>Performed post-route signoff: OpenSTA timing closure, PDN (VDD/VSS) topology inspection for IR drop integrity, DRC/antenna checks via KLayout; inspected LEF/DEF/GDS deliverables for physical correctness.</li>
+  </ul>
+</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Physical Design Engineer — Structured Industry Training</div>
+    <div class="exp-date">Jan 2023 – Jul 2023</div>
+  </div>
+  <div class="exp-org">ChipEdge Technologies Pvt Ltd &nbsp;·&nbsp; Bangalore, India</div>
+  <ul class="bullets">
+    <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs at 28nm CMOS using the complete Synopsys toolchain: Design Compiler (synthesis, SDC constraints), IC Compiler II / ICC2 (floorplan, placement, routing), PrimeTime (STA, MCMM sign-off), StarRC (parasitic extraction).</li>
+    <li>Executed full PD flow: die/core floorplanning, power planning (PDN stripe strategy), standard-cell placement, congestion-aware legalization, detailed routing, and physical verification (DRC/LVS via Calibre).</li>
+    <li>Performed setup/hold timing closure under MCMM constraints using PrimeTime; interpreted timing reports to identify critical paths, OCV-sensitive paths, and drove ECO iterations (buffering, cell upsizing, incremental CTS refinement).</li>
+    <li>Exported and inspected LEF/DEF/GDS deliverables; validated logical vs. physical consistency through LVS checks.</li>
+    <li>Gained 14nm FinFET process awareness — parasitics, double-patterning constraints, clock skew sensitivity, and power–timing trade-offs at advanced nodes.</li>
+    <li>Automated PD flow execution, QoR report extraction, and timing summary collation using TCL scripting.</li>
+  </ul>
+</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Assistant Professor — Electronics &amp; VLSI</div>
+    <div class="exp-date">Sep 2024 – Feb 2025</div>
+  </div>
+  <div class="exp-org">PES University &nbsp;·&nbsp; Bangalore, India</div>
+  <ul class="bullets">
+    <li>Taught VLSI Design, Analog Circuits, and Electronics; guided student projects aligned with industry design and physical implementation practices.</li>
+  </ul>
+</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Sessional Lecturer</div>
+    <div class="exp-date">Aug 2023 – Jun 2024</div>
+  </div>
+  <div class="exp-org">Basingstoke College of Technology &nbsp;·&nbsp; London, United Kingdom</div>
+  <ul class="bullets">
+    <li>Delivered applied Electronics and Engineering instruction; mentored students on structured, project-based technical execution.</li>
+  </ul>
+</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Research Scholar — RF ICs &amp; Passive Device Modeling</div>
+    <div class="exp-date">Oct 2015 – Dec 2022</div>
+  </div>
+  <div class="exp-org">Amrita Vishwa Vidya Peetham &nbsp;·&nbsp; Bangalore, India</div>
+  <ul class="bullets">
+    <li>Conducted advanced research in RF IC passive device modelling — behavioural modelling using Differential Evolution optimisation, FSS design, and EM characterisation using Ansys HFSS (500+ hours); built deep physical intuition for parasitics, substrate coupling, and frequency-dependent signal behaviour directly applicable to PD and signal integrity analysis.</li>
+    <li>Published 4 peer-reviewed journal papers and presented at 5 international conferences in semiconductor-focused forums; demonstrated rigorous analytical thinking, structured debugging, and high-quality technical documentation.</li>
+  </ul>
+</div>
+
+<div class="exp-item">
+  <div class="exp-header">
+    <div class="exp-title">Assistant Professor</div>
+    <div class="exp-date">Aug 2013 – Jul 2014</div>
+  </div>
+  <div class="exp-org">T. John College of Engineering &nbsp;·&nbsp; Bangalore, India</div>
+  <ul class="bullets">
+    <li>Taught Microwave Devices and Electrical Circuits; led curriculum refinement for improved student outcomes in electronics fundamentals.</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- EDUCATION -->
+<div class="section-title">Education</div>
+
+<div class="edu-item">
+  <div class="edu-left">
+    <div class="edu-degree">PhD — Electronics &nbsp;·&nbsp; <span class="edu-field">Passive Device Modeling for RFICs</span></div>
+    <div class="edu-univ">Amrita University, India</div>
+  </div>
+  <div class="edu-date">2015 – 2022</div>
+</div>
+<div class="edu-item">
+  <div class="edu-left">
+    <div class="edu-degree">M.Tech — <span class="edu-field">VLSI Design Engineering</span></div>
+    <div class="edu-univ">Amrita University, India</div>
+  </div>
+  <div class="edu-date">2011 – 2013</div>
+</div>
+<div class="edu-item">
+  <div class="edu-left">
+    <div class="edu-degree">B.Tech — <span class="edu-field">Electronics &amp; Communication Engineering</span></div>
+    <div class="edu-univ">University of Calicut, India</div>
+  </div>
+  <div class="edu-date">2006 – 2010</div>
+</div>
+
+<hr>
+
+<!-- PUBLICATIONS -->
+<div class="section-title">Publications &amp; Recognition</div>
+<div class="pub-item">4 peer-reviewed journal papers on electromagnetic modeling, behavioural modelling of RF circuits using Differential Evolution, and RF passive device characterization in international semiconductor-focused journals.</div>
+<div class="pub-item">5 international conference presentations on RF integrated circuits, FSS design, and high-frequency passive device behaviour.</div>
+
+</body>
+</html>
