@@ -341,6 +341,52 @@
       content: '›'; position: absolute; left: 0;
       color: var(--accent); font-size: 16px; line-height: 1.45;
     }
+    /* ── VSD PROGRAM CARD ────────────────────────────────── */
+    .tl-card.featured-program {
+      border-color: rgba(0,201,167,0.28);
+      background: linear-gradient(135deg, rgba(0,201,167,0.04) 0%, rgba(6,11,22,1) 60%);
+    }
+    .tl-card.featured-program:hover { border-color: rgba(0,201,167,0.5); }
+    .prog-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(0,201,167,0.1); border: 1px solid rgba(0,201,167,0.25);
+      border-radius: 20px; padding: 3px 10px; margin-bottom: 14px;
+    }
+    .prog-signoff {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0;
+    }
+    .prog-metric {
+      font-size: 12px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;
+      color: var(--accent); background: rgba(0,201,167,0.08);
+      border: 1px solid rgba(0,201,167,0.2); border-radius: 6px;
+      padding: 4px 10px;
+    }
+    .prog-weeks-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text2);
+      margin: 18px 0 10px;
+    }
+    .prog-weeks {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    }
+    .prog-week {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 9px; padding: 10px 12px;
+      transition: border-color 0.2s;
+    }
+    .prog-week:hover { border-color: rgba(0,201,167,0.25); }
+    .prog-week-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 3px;
+    }
+    .prog-week-title {
+      font-size: 12px; font-weight: 600; color: var(--text);
+      font-family: 'Space Grotesk', sans-serif; margin-bottom: 2px;
+    }
+    .prog-week-desc { font-size: 11px; color: var(--text2); line-height: 1.5; }
+    @media (max-width: 580px) { .prog-weeks { grid-template-columns: 1fr 1fr; } }
 
     /* ── SKILLS ─────────────────────────────────────────── */
     .skills-grid {
@@ -852,19 +898,66 @@
 
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
-        <div class="tl-card">
+        <div class="tl-card featured-program">
+          <div class="prog-badge">✦ Certified · 6-Week RTL-to-GDS Program</div>
           <div class="tl-top">
-            <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--text2);background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;">Training / Projects</span></div>
-            <div class="tl-date">Sep 2025 – Present</div>
+            <div class="tl-company">VSD Squadron — Physical Design Program
+              <span style="font-size:11px;font-weight:500;color:var(--text2);background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;">vlsisystemdesign.com</span>
+            </div>
+            <div class="tl-date">Sep 2025 – Mar 2026</div>
           </div>
-          <div class="tl-role">Self-Directed Physical Design Projects</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
+          <div class="tl-role">Physical Design Engineer — RTL-to-GDS · Gate-Level Simulation · SkyWater 130nm</div>
+          <div class="tl-loc">📍 Bangalore, India · GitHub Codespaces + Local Ubuntu</div>
+
+          <div class="prog-signoff">
+            <span class="prog-metric">fmax 152 MHz</span>
+            <span class="prog-metric">WNS +0.18 ns ✓</span>
+            <span class="prog-metric">DRC 0 violations</span>
+            <span class="prog-metric">Power 24.1 mW</span>
+            <span class="prog-metric">Area 61,097 µm²</span>
+          </div>
+
           <ul class="tl-bullets">
-            <li>Executed complete RTL-to-GDSII physical design flows using OpenLANE/OpenROAD, including end-to-end implementation of the PicoRV32a RISC core in GitHub Codespaces.</li>
-            <li>Performed report-driven iterations across synthesis, floorplanning, placement, CTS, routing, and STA — analyzing WNS/TNS, clock skew, congestion, utilization, and QoR metrics.</li>
-            <li>Applied ECO-style fixes including buffering, resizing, density tuning, and selective path cleanup to study timing improvement and placement-driven sensitivities.</li>
-            <li>Validated post-route timing using OpenSTA and inspected PDN (VDD/VSS) topology to ensure physical integrity and signoff-level correctness.</li>
+            <li>Executed complete RTL-to-GDSII of PicoRV32a RISC-V core (SkyWater 130nm HD PDK) using OpenLANE/OpenROAD — report-driven iterations across synthesis (Yosys), floorplan, placement, CTS (TritonCTS), detailed routing, and post-route STA; 0 DRC violations at signoff.</li>
+            <li>Performed timing closure using OpenSTA: WNS/TNS tracking, setup/hold analysis, ECO iterations (strategic buffering, cell resizing, density tuning); inspected PDN VDD/VSS topology for IR drop integrity.</li>
+            <li>Independently implemented <strong>__user_project_wrapper</strong> RTL-to-GDS at 100 MHz — resolved design hierarchy, traced RTL dependencies across the VSDSquadron SoC, configured ORFS environment, applied SDC constraints, and drove flow through all stages to final GDS.</li>
+            <li>Performed Gate-Level Simulation (GLS) of VSDSquadron SoC blocks using synthesized netlist — modified Makefile-driven verification flows, validated RTL-to-GLS functional equivalence across standalone and Caravel-integrated testcases, analysed signals in GTKWave.</li>
+            <li>Deployed and debugged ORFS toolchain in GitHub Codespaces and replicated locally on Ubuntu — mapped full devcontainer toolchain (OpenROAD, Yosys, TritonCTS, FastRoute, OpenSTA, KLayout, Magic) and re-executed RTL-to-GDS locally with cloud-vs-local QoR comparison.</li>
           </ul>
+
+          <div class="prog-weeks-label">Program Structure — 6 Weeks</div>
+          <div class="prog-weeks">
+            <div class="prog-week">
+              <div class="prog-week-num">Week 1</div>
+              <div class="prog-week-title">OpenLANE Flow</div>
+              <div class="prog-week-desc">Synthesis, Floorplan, STA, CTS, PDN — full stage literacy on SkyWater 130nm</div>
+            </div>
+            <div class="prog-week">
+              <div class="prog-week-num">Week 2</div>
+              <div class="prog-week-title">ORFS Toolchain Mastery</div>
+              <div class="prog-week-desc">Cloud + local execution, devcontainer deep-dive, Unix + environment debugging</div>
+            </div>
+            <div class="prog-week">
+              <div class="prog-week-num">Week 3</div>
+              <div class="prog-week-title">Block Verification</div>
+              <div class="prog-week-desc">VSDSquadron SoC standalone + Caravel-integrated tests; Makefile-driven simulation flow</div>
+            </div>
+            <div class="prog-week">
+              <div class="prog-week-num">Week 4</div>
+              <div class="prog-week-title">Wrapper RTL-to-GDS</div>
+              <div class="prog-week-desc">__user_project_wrapper at 100 MHz — hierarchy resolution, ORFS config, full PD flow</div>
+            </div>
+            <div class="prog-week">
+              <div class="prog-week-num">Week 5</div>
+              <div class="prog-week-title">Gate-Level Simulation</div>
+              <div class="prog-week-desc">GLS vs RTL validation across all SoC blocks; GTKWave waveform analysis</div>
+            </div>
+            <div class="prog-week">
+              <div class="prog-week-num">Week 6</div>
+              <div class="prog-week-title">Independent Execution</div>
+              <div class="prog-week-desc">Self-directed block RTL-to-GDS-to-GLS — full cycle without guided steps</div>
+            </div>
+          </div>
         </div>
       </div>
 
