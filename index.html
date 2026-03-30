@@ -600,8 +600,31 @@
 
     /* ── PROJECTS ─────────────────────────────────────── */
     .proj-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+      display: grid; grid-template-columns: 1fr; gap: 22px;
     }
+    .proj-card.full-width { grid-column: 1 / -1; }
+    .proj-signoff {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 8px;
+    }
+    .proj-metric {
+      font-size: 12px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;
+      color: var(--accent); background: rgba(0,201,167,0.08);
+      border: 1px solid rgba(0,201,167,0.2); border-radius: 6px;
+      padding: 4px 10px;
+    }
+    .proj-implementations {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;
+    }
+    .proj-impl {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .proj-impl-title {
+      font-size: 12.5px; font-weight: 700; color: var(--text);
+      font-family: 'Space Grotesk', sans-serif; margin-bottom: 6px;
+    }
+    .proj-impl-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+    @media (max-width: 600px) { .proj-implementations { grid-template-columns: 1fr; } }
     .proj-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 14px; padding: 28px;
@@ -877,14 +900,16 @@
           <span class="skill-tag">Placement & Routing</span>
           <span class="skill-tag">Clock Tree Synthesis</span>
           <span class="skill-tag">Static Timing Analysis</span>
-          <span class="skill-tag">MCMM Analysis</span>
+          <span class="skill-tag">MCMM / Multi-Corner</span>
           <span class="skill-tag">ECO Iterations</span>
-          <span class="skill-tag">PDN Inspection</span>
+          <span class="skill-tag">PDN Design</span>
           <span class="skill-tag">DRC / LVS</span>
           <span class="skill-tag">28nm CMOS</span>
           <span class="skill-tag">14nm FinFET</span>
+          <span class="skill-tag">SkyWater 130nm</span>
           <span class="skill-tag">Signal Integrity</span>
-          <span class="skill-tag">Power Optimization</span>
+          <span class="skill-tag">Parasitic Extraction</span>
+          <span class="skill-tag">IR Drop Awareness</span>
         </div>
       </div>
       <div class="skill-cat reveal reveal-delay-2">
@@ -897,32 +922,28 @@
           <span class="skill-tag">PrimeTime</span>
           <span class="skill-tag">StarRC</span>
           <span class="skill-tag">Design Compiler</span>
-          <span class="skill-tag">Cadence Innovus</span>
-          <span class="skill-tag">Cadence Virtuoso</span>
           <span class="skill-tag">Calibre DRC/LVS</span>
           <span class="skill-tag">OpenLANE</span>
           <span class="skill-tag">OpenROAD</span>
           <span class="skill-tag">OpenSTA</span>
-          <span class="skill-tag">Magic</span>
+          <span class="skill-tag">Yosys</span>
           <span class="skill-tag">KLayout</span>
+          <span class="skill-tag">Magic</span>
           <span class="skill-tag">Ansys HFSS</span>
         </div>
       </div>
       <div class="skill-cat reveal reveal-delay-4">
         <div class="skill-cat-head">
-          <div class="skill-cat-head-icon">💡</div>
-          Scripting & Soft Skills
+          <div class="skill-cat-head-icon">⌨️</div>
+          Scripting & Automation
         </div>
         <div class="skill-tags">
-          <span class="skill-tag">TCL Scripting</span>
+          <span class="skill-tag">TCL — PD Flow Automation</span>
           <span class="skill-tag">Shell Scripting</span>
-          <span class="skill-tag">Analytical Thinking</span>
-          <span class="skill-tag">Technical Documentation</span>
-          <span class="skill-tag">Root-Cause Analysis</span>
-          <span class="skill-tag">Cross-functional Collaboration</span>
-          <span class="skill-tag">Mentorship</span>
-          <span class="skill-tag">Learning Agility</span>
-          <span class="skill-tag">Engineering Discipline</span>
+          <span class="skill-tag">GNU Make / ORFS</span>
+          <span class="skill-tag">Git / GitHub Actions</span>
+          <span class="skill-tag">QoR Report Extraction</span>
+          <span class="skill-tag">STA Debug Scripting</span>
         </div>
       </div>
     </div>
@@ -951,7 +972,7 @@
               <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--accent);background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle;">● Active</span></div>
               <div class="tl-date">Sep 2025 – Present</div>
             </div>
-            <div class="tl-role">Physical Design Engineer — Synopsys ICC2 / PrimeTime Flow</div>
+            <div class="tl-role">Physical Design Engineer — Synopsys ICC2 / PrimeTime · 28nm CMOS</div>
             <div class="tl-loc">📍 Bangalore, India</div>
             <ul class="tl-bullets">
               <li>Executing RTL-to-GDS flows with Synopsys ICC2 across synthesis integration, floorplanning, placement, CTS, and detailed routing; achieving timing closure through WNS/TNS tracking, congestion-driven optimisation, and ECO-style resizing.</li>
@@ -970,7 +991,7 @@
               <div class="tl-date">Feb 2026 – Mar 2026</div>
             </div>
             <div class="tl-role">RTL-to-GDS · Gate-Level Simulation · SkyWater 130nm</div>
-            <div class="tl-loc">📍 Bangalore, India · GitHub Codespaces + Local Ubuntu</div>
+            <div class="tl-loc">📍 Bangalore, India · GitHub Codespaces + Local Ubuntu &nbsp;·&nbsp; <span style="color:var(--accent);font-size:11px;font-weight:600;">Concurrent with Star VLSI</span></div>
             <div class="prog-signoff">
               <span class="prog-metric">fmax 152 MHz</span>
               <span class="prog-metric">WNS +0.18 ns ✓</span>
@@ -1096,41 +1117,50 @@
     <h2 class="section-title">Featured Projects</h2>
     <div class="proj-grid">
 
-      <div class="proj-card reveal">
+      <div class="proj-card full-width reveal">
         <div class="proj-card-head">
-          <div class="proj-title">PicoRV32a — Full RTL-to-GDSII</div>
+          <div class="proj-title">RISC-V Physical Design — Complete RTL-to-GDS Signoff</div>
           <a href="https://github.com/vrinda-karuvanchery" target="_blank" rel="noopener" class="proj-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
             GitHub
           </a>
         </div>
-        <p class="proj-desc">End-to-end physical design implementation of the PicoRV32a RISC-V core using OpenLANE/OpenROAD in GitHub Codespaces. Covered synthesis, floorplanning, placement, CTS, routing, and post-route STA with report-driven QoR iterations — including ECO-style buffering, density tuning, and PDN verification.</p>
+
+        <div class="proj-signoff">
+          <span class="proj-metric">fmax 152 MHz</span>
+          <span class="proj-metric">WNS +0.18 ns ✓</span>
+          <span class="proj-metric">DRC 0 violations</span>
+          <span class="proj-metric">Total Power 24.1 mW</span>
+          <span class="proj-metric">Area 61,097 µm²</span>
+          <span class="proj-metric">SkyWater 130nm HD PDK</span>
+        </div>
+
+        <p class="proj-desc">End-to-end physical design implementation of RISC-V cores using OpenLANE/OpenROAD and ORFS frameworks on SkyWater 130nm process — covering every stage from RTL handoff through GDSII signoff. Executed structured, report-driven iterations at each PD stage: synthesis (Yosys), die/core floorplanning, standard-cell placement, CTS (TritonCTS), detailed routing (FastRoute + TritonRoute), and post-route STA (OpenSTA). Applied ECO-style optimisations — strategic buffering, cell resizing, density tuning, and selective path cleanup — to close WNS/TNS. Performed post-route signoff: PDN (VDD/VSS) topology inspection for IR drop integrity, DRC/antenna rule checks via KLayout, LEF/DEF/GDS deliverable validation. Also executed gate-level simulation (GLS) to validate RTL-to-GLS functional equivalence of the VSDSquadron SoC user project wrapper at 100 MHz, including full RTL hierarchy resolution, ORFS configuration, and SDC constraint authoring.</p>
+
+        <div class="proj-implementations">
+          <div class="proj-impl">
+            <div class="proj-impl-title">PicoRV32a — OpenLANE Flow</div>
+            <div class="proj-impl-desc">Complete PD flow using OpenLANE in GitHub Codespaces. Hands-on iterations across synthesis, floorplan, placement, CTS, routing, and post-route STA with full QoR analysis. PDN verification and DRC clean at signoff.</div>
+          </div>
+          <div class="proj-impl">
+            <div class="proj-impl-title">riscv32i — ORFS / OpenROAD Flow</div>
+            <div class="proj-impl-desc">Full RTL-to-GDS using OpenROAD Flow Scripts on SkyWater SCL 180nm. Achieved 152 MHz fmax, 0 DRC violations, 61,097 µm² area, 24.1 mW power. Timing analysed through every stage from synthesis to final signoff report.</div>
+          </div>
+        </div>
+
         <div class="proj-tags">
           <span class="proj-tag">OpenLANE</span>
-          <span class="proj-tag">OpenROAD</span>
-          <span class="proj-tag">OpenSTA</span>
-          <span class="proj-tag">RISC-V</span>
-          <span class="proj-tag">SkyWater 130nm</span>
-          <span class="proj-tag">RTL-to-GDSII</span>
-        </div>
-      </div>
-
-      <div class="proj-card reveal reveal-delay-2">
-        <div class="proj-card-head">
-          <div class="proj-title">RISC-V (riscv32i) on SCL 180nm</div>
-          <a href="https://github.com/vrinda-karuvanchery" target="_blank" rel="noopener" class="proj-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-        </div>
-        <p class="proj-desc">Full RTL-to-GDS flow for the riscv32i core targeting the SkyWater SCL 180nm process using the OpenROAD Flow Scripts (ORFS) framework. Achieved 152 MHz fmax with 0 DRC violations, 61,097 µm² design area, and 24.1 mW total power. Analyzed timing through each stage from synthesis to signoff.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">OpenROAD</span>
+          <span class="proj-tag">OpenROAD / ORFS</span>
           <span class="proj-tag">Yosys</span>
+          <span class="proj-tag">OpenSTA</span>
+          <span class="proj-tag">TritonCTS</span>
+          <span class="proj-tag">FastRoute</span>
           <span class="proj-tag">KLayout</span>
-          <span class="proj-tag">SCL 180nm</span>
-          <span class="proj-tag">CTS</span>
-          <span class="proj-tag">STA Signoff</span>
+          <span class="proj-tag">SkyWater 130nm</span>
+          <span class="proj-tag">RISC-V</span>
+          <span class="proj-tag">RTL-to-GDSII</span>
+          <span class="proj-tag">Gate-Level Simulation</span>
+          <span class="proj-tag">TCL Scripting</span>
         </div>
       </div>
 
