@@ -358,6 +358,28 @@
     }
     .exp-panel { display: none; }
     .exp-panel.active { display: block; }
+    .tl-bridge {
+      position: relative; margin-bottom: 28px; padding-left: 0;
+    }
+    .tl-bridge-card {
+      margin-left: 0;
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 14px 20px;
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.015);
+    }
+    .tl-bridge-icon {
+      font-size: 18px; flex-shrink: 0; opacity: 0.6;
+    }
+    .tl-bridge-text {
+      font-size: 12.5px; color: var(--text2); line-height: 1.6;
+    }
+    .tl-bridge-text strong { color: var(--text); font-weight: 500; }
+    .tl-bridge-link {
+      font-size: 11.5px; color: var(--accent); font-weight: 600;
+      cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+      background: none; border: none; padding: 0;
+    }
 
     /* ── VSD PROGRAM CARD ────────────────────────────────── */
     .tl-card.featured-program {
@@ -978,6 +1000,17 @@
               <li>Executed floorplanning, standard-cell placement, congestion-aware routing, and CTS with focus on timing-driven implementation and structured closure; interpreted PrimeTime reports to identify critical paths and drive ECO iterations.</li>
               <li>Gained 14nm FinFET awareness — parasitics, double-patterning constraints, clock skew sensitivity, and power–timing trade-offs at advanced nodes.</li>
             </ul>
+          </div>
+        </div>
+
+        <div class="tl-bridge reveal">
+          <div class="tl-bridge-card">
+            <div class="tl-bridge-icon">↩</div>
+            <div class="tl-bridge-text">
+              <strong>2023 – 2025 &nbsp;·&nbsp; Deliberate transition period</strong><br>
+              Took on teaching roles at Basingstoke College of Technology (London) and PES University (Bangalore) — consolidating domain fundamentals and building VLSI pedagogy while actively preparing to return to hands-on PD.
+              <br><button class="tl-bridge-link" onclick="switchTab('research')">View Research & Teaching →</button>
+            </div>
           </div>
         </div>
 
