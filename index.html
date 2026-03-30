@@ -341,6 +341,24 @@
       content: '›'; position: absolute; left: 0;
       color: var(--accent); font-size: 16px; line-height: 1.45;
     }
+    /* ── EXPERIENCE TABS ────────────────────────────────── */
+    .exp-tabs {
+      display: flex; gap: 8px; margin-bottom: 36px;
+    }
+    .exp-tab {
+      padding: 9px 22px; border-radius: 8px; cursor: pointer;
+      font-size: 13px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); transition: all 0.2s;
+    }
+    .exp-tab:hover { color: var(--text); border-color: rgba(0,201,167,0.3); }
+    .exp-tab.active {
+      background: rgba(0,201,167,0.1); border-color: rgba(0,201,167,0.4);
+      color: var(--accent);
+    }
+    .exp-panel { display: none; }
+    .exp-panel.active { display: block; }
+
     /* ── VSD PROGRAM CARD ────────────────────────────────── */
     .tl-card.featured-program {
       border-color: rgba(0,201,167,0.28);
@@ -894,137 +912,147 @@
   <div class="section-inner">
     <div class="section-label">Career Timeline</div>
     <h2 class="section-title">Work Experience</h2>
-    <div class="timeline">
 
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--accent);background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle;">● Active</span></div>
-            <div class="tl-date">Sep 2025 – Present</div>
-          </div>
-          <div class="tl-role">Self-Directed Physical Design Projects</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Executing RTL-to-GDSII flows on SkyWater 130nm using OpenLANE/OpenROAD — hands-on across synthesis, floorplan, placement, CTS, routing, and post-route STA.</li>
-            <li>Performing report-driven analysis at each PD stage: WNS/TNS tracking, congestion maps, clock skew, utilisation, and QoR iteration using ECO-style buffering and resizing.</li>
-            <li>Validating post-route signoff using OpenSTA; inspecting PDN topology and DRC/antenna checks via KLayout; delivering clean GDS with 0 violations.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card featured-program">
-          <div class="prog-badge">✦ 6-Week Physical Design Program · VSD / vlsisystemdesign.com</div>
-          <div class="tl-top">
-            <div class="tl-company">VSD Squadron — Physical Design Program</div>
-            <div class="tl-date">Feb 2026 – Mar 2026</div>
-          </div>
-          <div class="tl-role">RTL-to-GDS · Gate-Level Simulation · SkyWater 130nm</div>
-          <div class="tl-loc">📍 Bangalore, India · GitHub Codespaces + Local Ubuntu</div>
-
-          <div class="prog-signoff">
-            <span class="prog-metric">fmax 152 MHz</span>
-            <span class="prog-metric">WNS +0.18 ns ✓</span>
-            <span class="prog-metric">DRC 0 violations</span>
-            <span class="prog-metric">Power 24.1 mW</span>
-            <span class="prog-metric">Area 61,097 µm²</span>
-          </div>
-
-          <ul class="tl-bullets">
-            <li>Executed end-to-end RTL-to-GDSII of PicoRV32a RISC-V core on SkyWater 130nm — synthesis (Yosys), floorplan, placement, CTS (TritonCTS), detailed routing, and post-route STA; ECO iterations (buffering, resizing, density tuning) for timing closure; 0 DRC violations at signoff.</li>
-            <li>Independently implemented the VSDSquadron SoC user project wrapper RTL-to-GDS at 100 MHz — resolved full design hierarchy, traced RTL dependencies, configured ORFS, authored SDC constraints, and completed all stages through final GDS generation.</li>
-            <li>Performed Gate-Level Simulation (GLS) of VSDSquadron SoC blocks — validated RTL-to-GLS functional equivalence across standalone and Caravel-integrated testcases; confirmed signal integrity and timing behaviour using GTKWave waveform analysis.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">ChipEdge Technologies Pvt Ltd</div>
-            <div class="tl-date">Jan 2023 – Jul 2023</div>
-          </div>
-          <div class="tl-role">Physical Design Trainee</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs using Synopsys Design Compiler, ICC2, PrimeTime, and StarRC, following industry-standard sequencing.</li>
-            <li>Executed floorplanning, placement, routing, and clock tree synthesis with focus on timing-driven implementation, congestion awareness, and structured closure.</li>
-            <li>Performed static timing analysis including setup/hold checks and MCMM fundamentals, interpreting reports to identify critical paths and closure bottlenecks.</li>
-            <li>Gained exposure to 14nm FinFET concepts — parasitics, clock skew, and power–timing trade-offs.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-2">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">Amrita Vishwa Vidya Peetham</div>
-            <div class="tl-date">Oct 2015 – Dec 2022</div>
-          </div>
-          <div class="tl-role">Research Scholar (PhD)</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Conducted advanced research in RF integrated circuits and passive device modeling for 7+ years, strengthening understanding of layout-dependent behavior and parasitic effects.</li>
-            <li>Executed 500+ hours of electromagnetic simulations using Ansys HFSS, reinforcing physical intuition relevant to signal integrity and high-frequency effects.</li>
-            <li>Published 4 peer-reviewed journal papers and presented at 5 international semiconductor-focused conferences.</li>
-            <li>Developed strong analytical, documentation, and problem-decomposition skills applicable to design debug and root-cause analysis.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">PES University</div>
-            <div class="tl-date">Sep 2024 – Feb 2025</div>
-          </div>
-          <div class="tl-role">Assistant Professor</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Taught core Electronics and VLSI subjects with strong hands-on engagement with circuit behavior, devices, and system-level design concepts.</li>
-            <li>Guided students on industry-aligned technical projects, reinforcing applied engineering thinking alongside fundamentals.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-2">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">Basingstoke College of Engineering</div>
-            <div class="tl-date">Aug 2023 – Jun 2024</div>
-          </div>
-          <div class="tl-role">Sessional Lecturer</div>
-          <div class="tl-loc">📍 London, United Kingdom</div>
-          <ul class="tl-bullets">
-            <li>Delivered structured technical instruction aligned with applied engineering outcomes in the UK academic system.</li>
-            <li>Mentored students on project-based learning emphasizing correctness, rigor, and execution discipline.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-delay-1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div class="tl-company">T. John College of Engineering</div>
-            <div class="tl-date">Aug 2013 – Jul 2014</div>
-          </div>
-          <div class="tl-role">Assistant Professor</div>
-          <div class="tl-loc">📍 Bangalore, India</div>
-          <ul class="tl-bullets">
-            <li>Delivered engaging lectures on Microwave Devices and Electrical Circuits, integrating interactive teaching techniques.</li>
-            <li>Led curriculum refinement to enhance student comprehension and measurable academic performance.</li>
-          </ul>
-        </div>
-      </div>
-
+    <div class="exp-tabs">
+      <button class="exp-tab active" onclick="switchTab('pd')">Physical Design</button>
+      <button class="exp-tab" onclick="switchTab('research')">Research & Teaching</button>
     </div>
+
+    <!-- ── PD TAB ── -->
+    <div class="exp-panel active" id="tab-pd">
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--accent);background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle;">● Active</span></div>
+              <div class="tl-date">Sep 2025 – Present</div>
+            </div>
+            <div class="tl-role">Physical Design Engineer — Synopsys ICC2 / PrimeTime Flow</div>
+            <div class="tl-loc">📍 Bangalore, India</div>
+            <ul class="tl-bullets">
+              <li>Executing RTL-to-GDS flows with Synopsys ICC2 across synthesis integration, floorplanning, placement, CTS, and detailed routing; achieving timing closure through WNS/TNS tracking, congestion-driven optimisation, and ECO-style resizing.</li>
+              <li>Performing multi-corner MCMM timing validation with PrimeTime — analysing setup/hold margins under OCV, leveraging SDC constraints for critical path iteration and clock tree optimisation.</li>
+              <li>Validating signoff deliverables including DRC/LVS verification, parasitic extraction inspection, and final GDS generation with clean design-rule compliance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal reveal-delay-1">
+          <div class="tl-dot"></div>
+          <div class="tl-card featured-program">
+            <div class="prog-badge">✦ 6-Week Physical Design Program · VSD / vlsisystemdesign.com</div>
+            <div class="tl-top">
+              <div class="tl-company">VSD Squadron — Physical Design Program</div>
+              <div class="tl-date">Feb 2026 – Mar 2026</div>
+            </div>
+            <div class="tl-role">RTL-to-GDS · Gate-Level Simulation · SkyWater 130nm</div>
+            <div class="tl-loc">📍 Bangalore, India · GitHub Codespaces + Local Ubuntu</div>
+            <div class="prog-signoff">
+              <span class="prog-metric">fmax 152 MHz</span>
+              <span class="prog-metric">WNS +0.18 ns ✓</span>
+              <span class="prog-metric">DRC 0 violations</span>
+              <span class="prog-metric">Power 24.1 mW</span>
+              <span class="prog-metric">Area 61,097 µm²</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Executed end-to-end RTL-to-GDSII of PicoRV32a RISC-V core on SkyWater 130nm — synthesis (Yosys), floorplan, placement, CTS (TritonCTS), detailed routing, and post-route STA; ECO iterations for timing closure; 0 DRC violations at signoff.</li>
+              <li>Independently implemented the VSDSquadron SoC user project wrapper RTL-to-GDS at 100 MHz — resolved full design hierarchy, traced RTL dependencies, configured ORFS, authored SDC constraints, and completed all stages through final GDS.</li>
+              <li>Performed Gate-Level Simulation (GLS) of VSDSquadron SoC blocks — validated RTL-to-GLS functional equivalence across standalone and Caravel-integrated testcases; confirmed timing behaviour using GTKWave waveform analysis.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal reveal-delay-2">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-company">ChipEdge Technologies Pvt Ltd</div>
+              <div class="tl-date">Jan 2023 – Jul 2023</div>
+            </div>
+            <div class="tl-role">Physical Design Trainee</div>
+            <div class="tl-loc">📍 Bangalore, India</div>
+            <ul class="tl-bullets">
+              <li>Trained on block-level RTL-to-GDSII for semi-custom ASICs at 28nm CMOS using Synopsys Design Compiler (synthesis, SDC), ICC2 (floorplan, placement, routing, CTS), PrimeTime (MCMM STA, setup/hold closure), and StarRC (parasitic extraction).</li>
+              <li>Executed floorplanning, standard-cell placement, congestion-aware routing, and CTS with focus on timing-driven implementation and structured closure; interpreted PrimeTime reports to identify critical paths and drive ECO iterations.</li>
+              <li>Gained 14nm FinFET awareness — parasitics, double-patterning constraints, clock skew sensitivity, and power–timing trade-offs at advanced nodes.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── RESEARCH & TEACHING TAB ── -->
+    <div class="exp-panel" id="tab-research">
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-company">PES University</div>
+              <div class="tl-date">Sep 2024 – Feb 2025</div>
+            </div>
+            <div class="tl-role">Assistant Professor — Electronics & VLSI</div>
+            <div class="tl-loc">📍 Bangalore, India</div>
+            <ul class="tl-bullets">
+              <li>Taught VLSI Design, Analog Circuits, and Electronics; guided student projects aligned with industry physical design and implementation practices.</li>
+              <li>Brought hands-on PD perspective into curriculum — bridging academic theory with tool-driven execution discipline.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal reveal-delay-1">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-company">Basingstoke College of Technology</div>
+              <div class="tl-date">Aug 2023 – Jun 2024</div>
+            </div>
+            <div class="tl-role">Sessional Lecturer</div>
+            <div class="tl-loc">📍 London, United Kingdom</div>
+            <ul class="tl-bullets">
+              <li>Delivered applied Electronics and Engineering instruction in the UK academic system; mentored students on structured, project-based technical execution.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal reveal-delay-2">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-company">Amrita Vishwa Vidya Peetham</div>
+              <div class="tl-date">Oct 2015 – Dec 2022</div>
+            </div>
+            <div class="tl-role">Research Scholar — PhD in Electronics</div>
+            <div class="tl-loc">📍 Bangalore, India</div>
+            <ul class="tl-bullets">
+              <li>Conducted 7 years of research in RF IC passive device modelling — behavioural modelling using Differential Evolution optimisation, FSS design, and EM characterisation using Ansys HFSS (500+ hours); built deep physical intuition for parasitics, substrate coupling, and signal integrity directly applicable to PD.</li>
+              <li>Published 4 peer-reviewed journal papers and presented at 5 international semiconductor-focused conferences.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal reveal-delay-3">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div class="tl-company">T. John College of Engineering</div>
+              <div class="tl-date">Aug 2013 – Jul 2014</div>
+            </div>
+            <div class="tl-role">Assistant Professor</div>
+            <div class="tl-loc">📍 Bangalore, India</div>
+            <ul class="tl-bullets">
+              <li>Taught Microwave Devices and Electrical Circuits; led curriculum refinement for improved student outcomes in electronics fundamentals.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1323,6 +1351,14 @@ const counterObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.6 });
 counters.forEach(c => counterObs.observe(c));
+
+/* ── EXPERIENCE TABS ───────────────────────────────── */
+function switchTab(tab) {
+  document.querySelectorAll('.exp-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
 
 /* ── EMAIL REVEAL ──────────────────────────────────── */
 function revealEmail() {
