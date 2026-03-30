@@ -898,15 +898,30 @@
 
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
-        <div class="tl-card featured-program">
-          <div class="prog-badge">✦ Certified · 6-Week RTL-to-GDS Program</div>
+        <div class="tl-card">
           <div class="tl-top">
-            <div class="tl-company">VSD Squadron — Physical Design Program
-              <span style="font-size:11px;font-weight:500;color:var(--text2);background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;">vlsisystemdesign.com</span>
-            </div>
+            <div class="tl-company">Star VLSI <span style="font-size:11px;font-weight:500;color:var(--accent);background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle;">● Active</span></div>
+            <div class="tl-date">Sep 2025 – Present</div>
+          </div>
+          <div class="tl-role">Self-Directed Physical Design Projects</div>
+          <div class="tl-loc">📍 Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Executing RTL-to-GDSII flows on SkyWater 130nm using OpenLANE/OpenROAD — hands-on across synthesis, floorplan, placement, CTS, routing, and post-route STA.</li>
+            <li>Performing report-driven analysis at each PD stage: WNS/TNS tracking, congestion maps, clock skew, utilisation, and QoR iteration using ECO-style buffering and resizing.</li>
+            <li>Validating post-route signoff using OpenSTA; inspecting PDN topology and DRC/antenna checks via KLayout; delivering clean GDS with 0 violations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-card featured-program">
+          <div class="prog-badge">✦ Recently Completed · 6-Week RTL-to-GDS Program</div>
+          <div class="tl-top">
+            <div class="tl-company">VSD Squadron — Physical Design Program</div>
             <div class="tl-date">Sep 2025 – Mar 2026</div>
           </div>
-          <div class="tl-role">Physical Design Engineer — RTL-to-GDS · Gate-Level Simulation · SkyWater 130nm</div>
+          <div class="tl-role">RTL-to-GDS · Gate-Level Simulation · SkyWater 130nm · vlsisystemdesign.com</div>
           <div class="tl-loc">📍 Bangalore, India · GitHub Codespaces + Local Ubuntu</div>
 
           <div class="prog-signoff">
@@ -918,46 +933,11 @@
           </div>
 
           <ul class="tl-bullets">
-            <li>Executed complete RTL-to-GDSII of PicoRV32a RISC-V core (SkyWater 130nm HD PDK) using OpenLANE/OpenROAD — report-driven iterations across synthesis (Yosys), floorplan, placement, CTS (TritonCTS), detailed routing, and post-route STA; 0 DRC violations at signoff.</li>
-            <li>Performed timing closure using OpenSTA: WNS/TNS tracking, setup/hold analysis, ECO iterations (strategic buffering, cell resizing, density tuning); inspected PDN VDD/VSS topology for IR drop integrity.</li>
-            <li>Independently implemented <strong>__user_project_wrapper</strong> RTL-to-GDS at 100 MHz — resolved design hierarchy, traced RTL dependencies across the VSDSquadron SoC, configured ORFS environment, applied SDC constraints, and drove flow through all stages to final GDS.</li>
-            <li>Performed Gate-Level Simulation (GLS) of VSDSquadron SoC blocks using synthesized netlist — modified Makefile-driven verification flows, validated RTL-to-GLS functional equivalence across standalone and Caravel-integrated testcases, analysed signals in GTKWave.</li>
-            <li>Deployed and debugged ORFS toolchain in GitHub Codespaces and replicated locally on Ubuntu — mapped full devcontainer toolchain (OpenROAD, Yosys, TritonCTS, FastRoute, OpenSTA, KLayout, Magic) and re-executed RTL-to-GDS locally with cloud-vs-local QoR comparison.</li>
+            <li>Completed end-to-end RTL-to-GDSII of PicoRV32a RISC-V core on SkyWater 130nm — synthesis (Yosys), floorplan, placement, CTS (TritonCTS), routing, and post-route STA with OpenSTA; ECO iterations for timing closure; 0 DRC violations at signoff.</li>
+            <li>Independently implemented <strong>__user_project_wrapper</strong> RTL-to-GDS at 100 MHz — resolved hierarchy, traced RTL dependencies, configured ORFS, applied SDC constraints, and completed all stages through final GDS.</li>
+            <li>Performed Gate-Level Simulation (GLS) of VSDSquadron SoC blocks — validated RTL-to-GLS functional equivalence across standalone and Caravel-integrated testcases; analysed gate-level signals in GTKWave.</li>
+            <li>Deployed full ORFS toolchain in GitHub Codespaces and replicated locally on Ubuntu; mapped devcontainer environment (OpenROAD, Yosys, TritonCTS, FastRoute, KLayout) and benchmarked cloud-vs-local QoR.</li>
           </ul>
-
-          <div class="prog-weeks-label">Program Structure — 6 Weeks</div>
-          <div class="prog-weeks">
-            <div class="prog-week">
-              <div class="prog-week-num">Week 1</div>
-              <div class="prog-week-title">OpenLANE Flow</div>
-              <div class="prog-week-desc">Synthesis, Floorplan, STA, CTS, PDN — full stage literacy on SkyWater 130nm</div>
-            </div>
-            <div class="prog-week">
-              <div class="prog-week-num">Week 2</div>
-              <div class="prog-week-title">ORFS Toolchain Mastery</div>
-              <div class="prog-week-desc">Cloud + local execution, devcontainer deep-dive, Unix + environment debugging</div>
-            </div>
-            <div class="prog-week">
-              <div class="prog-week-num">Week 3</div>
-              <div class="prog-week-title">Block Verification</div>
-              <div class="prog-week-desc">VSDSquadron SoC standalone + Caravel-integrated tests; Makefile-driven simulation flow</div>
-            </div>
-            <div class="prog-week">
-              <div class="prog-week-num">Week 4</div>
-              <div class="prog-week-title">Wrapper RTL-to-GDS</div>
-              <div class="prog-week-desc">__user_project_wrapper at 100 MHz — hierarchy resolution, ORFS config, full PD flow</div>
-            </div>
-            <div class="prog-week">
-              <div class="prog-week-num">Week 5</div>
-              <div class="prog-week-title">Gate-Level Simulation</div>
-              <div class="prog-week-desc">GLS vs RTL validation across all SoC blocks; GTKWave waveform analysis</div>
-            </div>
-            <div class="prog-week">
-              <div class="prog-week-num">Week 6</div>
-              <div class="prog-week-title">Independent Execution</div>
-              <div class="prog-week-desc">Self-directed block RTL-to-GDS-to-GLS — full cycle without guided steps</div>
-            </div>
-          </div>
         </div>
       </div>
 
